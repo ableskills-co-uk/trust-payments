@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="sidebar.main">
+            <referenceBlock name="customer_account_navigation">
+                <block class="SecureTrading\Trust\Block\Account\STSortLink"
+                       name="customer-account-navigation-my-secure-trading-credit-cards-link"
+                       ifconfig="payment/vault_secure_trading/active">
+                    <arguments>
+                        <argument name="path" xsi:type="string">vault/cards/listaction</argument>
+                        <argument name="label" xsi:type="string" translate="true">Secure Trading Stored Payment Methods</argument>
+                        <argument name="sortOrder" xsi:type="number">160</argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Customer\Block\Account\SortLinkInterface"
+                       name="customer-account-navigation-my-subscription"
+                       ifconfig="payment/vault_secure_trading/active"
+                       cacheable="false">
+                    <arguments>
+                        <argument name="path" xsi:type="string">securetrading/subscription/index</argument>
+                        <argument name="label" xsi:type="string">My Subscription</argument>
+                        <argument name="sortOrder" xsi:type="number">240</argument>
+                        <argument name="attributes" xsi:type="array">
+                            <item name="class" xsi:type="string">Subscription</item>
+                        </argument>
+                    </arguments>
+                </block>
+            </referenceBlock>
+        </referenceContainer>
+    </body>
+</page>

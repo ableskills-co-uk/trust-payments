@@ -1,0 +1,36 @@
+<?php /** @var \SecureTrading\Trust\Block\PaymentPage\Raw $block */ ?>
+<h2>Processing...</h2>
+<form action="<?php print $block->getRedirectUrl(); ?>" method="post" id="securetrading_stpp_redirect_form">
+    <input type="hidden" name="_charset_"/>
+	<?php foreach ($block->getRedirectData() as $k => $v): ?>
+<!--		<?php /*if ($k == 'ruleidentifiers'): */?>
+			<?php /*foreach ($v as $ruleIdentifier): */?>
+                <input type="hidden" name="ruleidentifier"
+                       value="<?/*= $block->escapeHtml($ruleIdentifier); */?>"/>
+			<?php /*endforeach; */?>
+		<?php /*elseif ($k == 'stextraurlnotifyfields'): */?>
+			<?php /*foreach ($v as $stextraurlnotifyfields): */?>
+                <input type="hidden" name="stextraurlnotifyfields"
+                       value="<?/*= $block->escapeHtml($stextraurlnotifyfields); */?>"/>
+			--><?php /*endforeach; */?>
+
+        <?php if (is_array($v)): ?>
+            <?php foreach ($v as $value): ?>
+            <input type="hidden" name="<?php print $k; ?>"
+                   value="<?= $block->escapeHtml($value); ?>"/>
+            <?php endforeach; ?>
+		<?php else: ?>
+            <input type="hidden" name="<?php print $k; ?>"
+                   value="<?= $block->escapeHtml($v); ?>"/>
+		<?php endif; ?>
+	<?php endforeach; ?>
+    <input type="submit" value="Pay"/>
+</form>
+<script type="text/javascript">
+    document.body.onload = function () {
+        document.getElementById("securetrading_stpp_redirect_form").submit();
+    };
+</script>
+<noscript>
+    <p>You are seeing this message because JavaScript is disabled. Click "Pay" to continue with your transaction.</p>
+</noscript>

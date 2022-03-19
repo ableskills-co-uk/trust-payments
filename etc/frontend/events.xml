@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="checkout_cart_product_add_before">
+        <observer name="subscription_redirect_to_product_detail" instance="SecureTrading\Trust\Observer\Cart\RedirectToProductDetail"/>
+    </event>
+
+    <event name="catalog_product_load_after">
+        <observer name="set_additional_options" instance="SecureTrading\Trust\Observer\Cart\SetAdditionalOptionsBeforeAddToCart"/>
+    </event>
+
+    <event name="checkout_submit_all_after">
+        <observer name="set_multishipping_payment_data" instance="SecureTrading\Trust\Observer\Model\Checkout\Type\MultiShipping\PrepareData"/>
+    </event>
+
+    <event name="layout_load_before">
+        <observer name="js-for-region" instance="SecureTrading\Trust\Observer\IncludeJsFileDependRegion"/>
+        <observer name="secure_trading_layout_load" instance="SecureTrading\Trust\Observer\Layout\Load"/>
+    </event>
+    
+    <event name="checkout_type_multishipping_create_orders_single">
+        <observer name="disable_send_email_before_paying" instance="SecureTrading\Trust\Observer\Model\Checkout\Type\MultiShipping\DisableSendEmail"/>
+    </event>
+</config>

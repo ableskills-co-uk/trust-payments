@@ -1,0 +1,22 @@
+{
+  "name": "trust-payments-limited/module-trust",
+  "description": "N/A",
+  "require": {
+    "securetrading/stpp_json": "*",
+    "firebase/php-jwt": "*"
+  },
+  "type": "magento2-module",
+  "version": "3.1.1",
+  "license": [
+    "OSL-3.0",
+    "proprietary"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "SecureTrading\\Trust\\": ""
+    }
+  }
+}

@@ -1,0 +1,10 @@
+<?php
+/** @var \SecureTrading\Trust\Block\PaymentPage\Iframe $block */
+?>
+<iframe
+        width="<?= $block->getWidth() ?>"
+        height="<?= $block->getHeight() ?>"
+        src="<?= $block->gePaymentUrl() ?>"
+        frameborder="0"
+        allowtransparency="”true”">
+</iframe>

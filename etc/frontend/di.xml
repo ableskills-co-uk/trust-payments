@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+        <arguments>
+            <argument name="configProviders" xsi:type="array">
+                <item name="secure_trading_config_provider" xsi:type="object">SecureTrading\Trust\Model\Ui\ConfigProvider</item>
+                <item name="checkout_installment_config_provider" xsi:type="object">SecureTrading\Trust\Model\Ui\InstallmentConfigProvider</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="SecureTrading\Trust\Model\Ui\ConfigProvider">
+        <arguments>
+            <argument name="config" xsi:type="object">SecureTradingConfig</argument>
+        </arguments>
+    </type>
+
+    <type name="SecureTrading\Trust\Controller\Order\Response">
+        <arguments>
+            <argument name="config" xsi:type="object">SecureTradingConfig</argument>
+            <argument name="commandPool" xsi:type="object">SecureTradingCommandPool</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Vault\Model\Ui\TokensConfigProvider">
+        <arguments>
+            <argument name="tokenUiComponentProviders" xsi:type="array">
+                <item name="secure_trading" xsi:type="object">SecureTrading\Trust\Model\Ui\TokenUiComponentProvider</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Vault\Model\Ui\TokensConfigProvider">
+        <arguments>
+            <argument name="tokenUiComponentProviders" xsi:type="array">
+                <item name="api_secure_trading" xsi:type="object">SecureTrading\Trust\Model\Ui\TokenUiComponentProviderApi</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Multishipping\Controller\Checkout\OverviewPost">
+        <plugin name="redirect_to_stpp_multishipping" type="SecureTrading\Trust\Plugin\Multishipping\Controller\Checkout\RedirectToPaymentPage"/>
+    </type>
+
+    <type name="Magento\Multishipping\Helper\Data">
+        <plugin name="prevent_subscription_product_from_multishipping" type="SecureTrading\Trust\Plugin\Multishipping\Helper\ValidateMultiShipping"/>
+    </type>
+</config>

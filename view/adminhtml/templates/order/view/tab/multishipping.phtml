@@ -1,0 +1,21 @@
+<?php
+/** @var \SecureTrading\Trust\Block\Adminhtml\Order\View\Tab\MultiShipping $block */
+?><section class="admin__page-section">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('List Related Orders')) ?></span>
+    </div>
+    <div id="log_details_fieldset" class="admin__page-section-content log-details">
+        <table class="log-info data-table admin__table-secondary">
+            <tbody>
+			<?php $relatedOrderIds = $block->getRelatedOrders()?>
+			<?php foreach($relatedOrderIds as $id => $incrementId): ?>
+            <tr>
+				<td><a target="_blank" href="<?= $block->buildUrl($id) ?>">
+						<?= $incrementId ?>
+					</a></td>
+            </tr>
+			<?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</section>

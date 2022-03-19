@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add
+                id="SecureTrading_Trust::securetrading"
+                title="Trust Payments"
+                module="SecureTrading_Trust"
+                sortOrder="35"
+                resource="SecureTrading_Trust::securetrading"
+        />
+        <add
+                id="SecureTrading_Trust::subscription"
+                title="Subscription"
+                module="SecureTrading_Trust"
+                sortOrder="0"
+                resource="SecureTrading_Trust::subscription"
+                action="securetrading/subscription/index"
+                parent="SecureTrading_Trust::securetrading"
+        />
+        <add
+                id="SecureTrading_Trust::configuration"
+                title="Configuration"
+                module="SecureTrading_Trust"
+                sortOrder="10"
+                action="adminhtml/system_config/edit/section/payment/secure_trading"
+                resource="SecureTrading_Trust::configuration"
+                parent="SecureTrading_Trust::securetrading"
+        />
+    </menu>
+</config>

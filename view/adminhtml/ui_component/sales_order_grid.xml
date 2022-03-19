@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <columns name="sales_order_columns">
+        <actionsColumn name="subs_id" class="SecureTrading\Trust\Ui\Component\Listing\Column\Subscription">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="viewUrlPath" xsi:type="string">securetrading/subscription/detail</item>
+                    <item name="urlEntityParamName" xsi:type="string">poid</item>
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="label" xsi:type="string" translate="true">Subscription Id</item>
+                </item>
+            </argument>
+        </actionsColumn>
+    </columns>
+</listing>

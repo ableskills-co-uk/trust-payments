@@ -1,0 +1,20 @@
+<?php
+$data = $block->getOrderData();
+?>
+<div id="form-cc" class="form-cc" data-bind="scope:'form-cc'" style="display: block">
+	<!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+    {
+        "#form-cc": {
+            "Magento_Ui/js/core/app": {
+               "components": {
+                    "form-cc": {
+                        "component": "SecureTrading_Trust/js/view/payment/method-renderer/multishipping-form-cc",
+                        "orderData": <?php echo $block->jsonDecode($data) ?>
+                    }
+                }
+            }
+        }
+    }
+</script>

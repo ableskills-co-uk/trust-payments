@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="securetrading_paymentpages_cron_group">
+        <job name="securetrading_paymentpages_cancel_pending_order" instance="SecureTrading\Trust\Cron\PaymentPage\CancelPendingOrder" method="execute">
+            <schedule>* * * * *</schedule>
+        </job>
+    </group>
+</config>

@@ -1,0 +1,32 @@
+<style>
+    #st-card-number-iframe, #st-expiration-date-iframe, #st-security-code-iframe {height: 90px;}
+    #st-expiration-date-iframe, #st-security-code-iframe {width: 100%;}
+    #security_expiry_container{width:300px; height:100px;}
+    .float-left{float:left;}
+    .half-width{width:135px;}
+    .padding-right{padding:0 30px 0 0;}
+    .clear-both{clear:both;}
+</style>
+<div id="st-notification-frame"></div>
+<form id="st-form" data-bind="attr:{action: getCardUrl()}" method="POST">
+    <div id="st-card-number" class="st-card-number"></div>
+    <div id="security_expiry_container">
+        <div id="st-expiration-date" class="half-width float-left padding-right"></div>
+        <div id="st-security-code" class="half-width float-left"></div>
+    </div>
+    <div class='clear-both'></div>
+    <!-- ko if: checkRenderAnimatedCard()-->
+    <div id="st-animated-card" class="st-animated-card-wrapper"></div>
+    <!-- /ko -->
+    <button style="display: none" type="submit" id="st-form__submit" class="st-form__submit" form="st-form">
+        Pay securely
+    </button>
+</form>
+<button id="Continue" data-bind="
+                        click: buttonFake,
+                        attr: {title: $t('Continue')},
+                        ">
+    <span data-bind="i18n: 'Continue'"></span>
+</button>
+
+

@@ -1,0 +1,58 @@
+<?php
+$data = $block->getOptionSubscription();
+$options = $data['options'];
+$finalPriceProduct = $data['priceProduct'];
+$enable = $data['enable'];
+?>
+<?php
+if ($enable) {
+	?>
+    <div class="admin__field-note"
+         style="width: 830px; margin-left: 430px; margin-bottom: 20px; border: 2px groove; padding: 10px">
+        <table id="secure_trading_options_subscription">
+            <tbody>
+			<?php $i = 0; ?>
+			<?php if ($options) { ?>
+				<?php foreach ($options as $option) {
+					$id = $i ?>
+                    <tr style="padding: 5px">
+                        <td style="padding: 5px"><span style="font-style: normal; font-size: 1.4rem; font-weight: 400"><?= $block->getDescription((int)$option['skipthefirstpayment'], (int)$option['subscriptionfrequency'], $option['subscriptionunit'], (int)$option['subscriptionfinalnumber'], $finalPriceProduct, $option['subscriptiontype']) ?></span></td>
+                    </tr>
+					<?php $i++;
+				}
+			} ?>
+            </tbody>
+        </table>
+    </div>
+	<?php
+} else {
+	?>
+    <div class="admin__field-note"
+         style="width: 830px; margin-left: 430px; margin-bottom: 20px; border: 2px groove; padding: 10px">
+        <div style="margin-bottom: 20px">
+            <span><?= __('E.g: Unit = Day, Frequency = 1, Final Number = 4, Type = Installment, Free Trial = Checked. The subscription payment option is displayed as: £30 every 1 DAY(s) processing 4 Installment payments in total. (Free Trial - first UNIT is free.)') ?></span>
+        </div>
+        <div>
+            <span><?= __('For INSTALLMENT type, you should calculate the (daily/monthly) payment before setting. Formula: ((base price) * (qty)) / ((final number) - (skip the first payment))') ?></span>
+        </div>
+    </div>
+	<?php
+}
+?>
+<div id="api-formcc" data-bind="scope:'api-formcc'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+    {
+        "#api-formcc": {
+            "Magento_Ui/js/core/app": {
+               "components": {
+                    "api-formcc": {
+                        "component": "SecureTrading_Trust/js/view/catalog/product/addMessage"
+                    }
+                }
+            }
+        }
+    }
+</script>
+

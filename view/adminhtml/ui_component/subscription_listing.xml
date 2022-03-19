@@ -1,0 +1,136 @@
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">subscription_listing.subscription_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>subscription_listing_columns</spinner>
+        <deps>
+            <dep>subscription_listing.subscription_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="subscription_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <updateUrl path="mui/index/render"/>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">id</param>
+            </storageConfig>
+        </settings>
+        <aclResource>SecureTrading_Trust::subscription</aclResource>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="subscription_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+<!--        <filterSearch name="fulltext"/>-->
+        <filters name="listing_filters">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="templates" xsi:type="array">
+                        <item name="filters" xsi:type="array">
+                            <item name="select" xsi:type="array">
+                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</item>
+                                <item name="template" xsi:type="string">ui/grid/filters/elements/ui-select</item>
+                            </item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </filters>
+        <paging name="listing_paging"/>
+        <exportButton name="export_button"/>
+    </listingToolbar>
+    <columns name="subscription_listing_columns">
+        <selectionsColumn name="ids" sortOrder="10">
+            <settings>
+                <indexField>id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="id" sortOrder="20">
+            <settings>
+                <label translate="true">ID</label>
+                <dataType>text</dataType>
+                <filter>text</filter>
+            </settings>
+        </column>
+        <column name="order_id" sortOrder="30">
+            <settings>
+                <label translate="true">Order ID</label>
+                <dataType>text</dataType>
+                <filter>text</filter>
+            </settings>
+        </column>
+        <column name="transaction_id" class="SecureTrading\Trust\Ui\Component\Listing\Column\Transaction" sortOrder="40">
+            <settings>
+                <label translate="true">Transaction ID</label>
+                <dataType>text</dataType>
+                <filter>text</filter>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+            </settings>
+        </column>
+        <column name="unit" component="Magento_Ui/js/grid/columns/select" sortOrder="60">
+            <settings>
+                <options class="SecureTrading\Trust\Model\Source\Unit"/>
+                <filter>select</filter>
+                <label translate="true">Unit</label>
+                <dataType>select</dataType>
+            </settings>
+        </column>
+        <column name="frequency" sortOrder="70">
+            <settings>
+                <label translate="true">Frequency</label>
+                <dataType>number</dataType>
+                <filter>number</filter>
+            </settings>
+        </column>
+        <column name="final_number" sortOrder="80">
+            <settings>
+                <label translate="true">Final Number (Total Cycle)</label>
+                <dataType>number</dataType>
+                <filter>number</filter>
+            </settings>
+        </column>
+        <column name="type" component="Magento_Ui/js/grid/columns/select" sortOrder="90">
+            <settings>
+                <options class="SecureTrading\Trust\Model\Source\Type"/>
+                <filter>select</filter>
+                <label translate="true">Type</label>
+                <dataType>select</dataType>
+            </settings>
+        </column>
+        <column name="skip_the_first_payment" component="Magento_Ui/js/grid/columns/select" sortOrder="100">
+            <settings>
+                <options class="SecureTrading\Trust\Model\Source\SkipTheFirstPayment"/>
+                <filter>select</filter>
+                <label translate="true">Skip The First Payment</label>
+                <dataType>select</dataType>
+            </settings>
+        </column>
+        <column name="status" component="Magento_Ui/js/grid/columns/select" sortOrder="110">
+            <settings>
+                <options class="SecureTrading\Trust\Model\Source\Status"/>
+                <filter>select</filter>
+                <label translate="true">Status</label>
+                <dataType>select</dataType>
+            </settings>
+        </column>
+        <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date" sortOrder="120">
+            <settings>
+                <filter>dateRange</filter>
+                <label translate="true">Created At</label>
+                <dataType>date</dataType>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="SecureTrading\Trust\Ui\Component\Listing\Column\Actions" sortOrder="300">
+            <settings>
+                <indexField>id</indexField>
+                <label translate="true">Quick Action</label>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

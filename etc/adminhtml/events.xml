@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="checkout_submit_all_after">
+        <observer name="registry_order_id" instance="SecureTrading\Trust\Observer\CreateOrderObserver" />
+    </event>
+    <event name="catalog_product_save_before">
+        <observer name="securetrading_product_save" instance="SecureTrading\Trust\Observer\Product\Save"/>
+    </event>
+    <event name="order_cancel_after">
+        <observer name="cancel_multishipping_order" instance="SecureTrading\Trust\Observer\Order\CancelMultiShippingOrder"/>
+    </event>
+    <event name="sales_order_payment_capture">
+        <observer name="capture_multishipping_order" instance="SecureTrading\Trust\Observer\Payment\CaptureMultiShippingOrder"/>
+    </event>
+    <event name="sales_order_payment_void">
+        <observer name="void_multishipping_order" instance="SecureTrading\Trust\Observer\Payment\VoidMultiShippingOrder"/>
+    </event>
+<!--    <event name="sales_order_payment_refund">-->
+<!--        <observer name="refund_multishipping_order" instance="SecureTrading\Trust\Observer\Payment\RefundMultiShippingOrder"/>-->
+<!--    </event>-->
+</config>

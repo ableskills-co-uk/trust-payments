@@ -1,0 +1,41 @@
+<?php
+/** @var \SecureTrading\Trust\Block\Catalog\Product\View $block */
+$product = $block->getProduct();
+$finalPriceProduct = $product->getPriceInfo()->getPrice('final_price')->getValue();
+$isActive = $block->isActive();
+$isEnableSubscription = $product->getData(\SecureTrading\Trust\Helper\Data::ATT_ENABLE_SUBS);
+$isRequireSubscription = $product->getData(\SecureTrading\Trust\Helper\Data::ATT_REQUIRE_SUBS);
+$optionsRawData = $product->getData(\SecureTrading\Trust\Helper\Data::ATT_OPTIONS_SUBS);
+$options = $block->decodeOptions(isset($optionsRawData) ? $optionsRawData : '');
+
+if ($isActive && $isEnableSubscription && is_array($options)):?>
+
+    <table id="secure_trading_options_subscription">
+        <tbody>
+        <?php $i = 0; ?>
+        <?php if ($options) { ?>
+            <?php foreach ($options as $option) {
+                $id = $i ?>
+                <tr>
+                    <td id="option_<?php echo $i; ?>">
+                        <input required="required" type="radio" name="secure_trading_subscription" value='<?= $block->encodeOptions($option) ?>'/>
+                    </td>
+                    <td><?= $block->getDescription((int)$option['skipthefirstpayment'],(int) $option['subscriptionfrequency'], $option['subscriptionunit'], (int)$option['subscriptionfinalnumber'], $finalPriceProduct, $option['subscriptiontype'])?></td>
+                </tr>
+                <?php $i++;
+            }
+        } ?>
+        <?php if (!$isRequireSubscription) { ?>
+            <tr>
+                <td id="nosubscription">
+                    <input <?= $isRequireSubscription ? "required" : "" ?> type="radio"
+                                                                           name="secure_trading_subscription"
+                                                                           value='nosubscription' checked="checked"/>
+                </td>
+                <td><?= __('Without subscription') ?></td>
+            </tr>
+        <?php } ?>
+        </tbody>
+    </table>
+
+<?php endif ?>

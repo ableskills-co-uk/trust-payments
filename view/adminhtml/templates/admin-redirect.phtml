@@ -1,0 +1,59 @@
+<?php
+/** @var \SecureTrading\Trust\Block\Adminhtml\PaymentPage\Redirect $block */
+
+// Check $isRedirectedToOrderGrid
+if(!$block->isRedirectedToOrderGrid()){
+
+$orderData = $block->jsonDecode($block->getOrderData());
+$isUsedIframe = $block->isUsedIframe();
+if (isset($isUsedIframe) && $isUsedIframe == 1) { ?>
+    <iframe
+            width="<?= $block->getWidth() ?>"
+            height="<?= $block->getHeight() ?>"
+            src="<?= $block->gePaymentUrl($block->getOrderData()) ?>"
+            frameborder="0"
+            allowtransparency="”true”">
+    </iframe>
+<?php } else { echo "Proccessing..."; } ?>
+<script>
+    require(['jquery'], function ($) {
+        'use strict';
+        var isUsedIframe;
+
+        isUsedIframe = <?= $isUsedIframe ?>;
+
+        if (isUsedIframe !== 1) {
+            var response = <?= $orderData ?>,
+                info = response.info,
+                $form = $("<form>")
+                    .attr("method", "POST")
+                    .attr("action", response.url);
+            $form.append($("<input type='hidden'>").attr("name", "_charset_"));
+            $.each(info, function (key, value) {
+                if ($.isArray(value)) {
+                    $.each(value, function (k, v) {
+                        var $hiddenField = $("<input type='hidden'>")
+                            .attr("name", key)
+                            .val(v);
+                        $form.append($hiddenField);
+                    })
+                } else {
+                    var $hiddenField = $("<input type='hidden'>")
+                        .attr("name", key)
+                        .val(value);
+                    $form.append($hiddenField);
+                }
+            });
+            $('body').append($form);
+            $form.submit();
+        }
+    })
+</script>
+<?php } else { ?>
+
+<script type="text/javascript">
+    window.top.location.href = '<?= $block->escapeJs($this->getUrl(urldecode($this->getRequest()->getParam('redirect_path')))) ?>';
+</script>
+
+<?php } ?>
+

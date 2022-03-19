@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="SecureTrading_Trust::securetrading" title="SecureTrading">
+                    <resource id="SecureTrading_Trust::subscription" title="Subscription">
+                        <resource id="SecureTrading_Trust::subscription_detail" title="Subscription Detail"/>
+                    </resource>
+                    <resource id="SecureTrading_Trust::configuration" title="Configuration"/>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

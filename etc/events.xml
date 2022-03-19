@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="payment_method_assign_data_secure_trading">
+        <observer name="secure_trading_additional_data" instance="SecureTrading\Trust\Observer\STSetAdditionalInformation" />
+    </event>
+    <event name="payment_method_assign_data_api_secure_trading">
+        <observer name="secure_trading_api_additional_data" instance="SecureTrading\Trust\Observer\AddCreditCardToPayment" />
+    </event>
+<!--    <event name="sales_model_service_quote_submit_success">-->
+<!--        <observer name="create_invoice_to_order" instance="SecureTrading\Trust\Observer\CreateInvoiceToOrder" />-->
+<!--    </event>-->
+    <event name="sales_order_payment_place_start">
+        <observer name="create_invoice_subs_type_installment_to_order" instance="SecureTrading\Trust\Observer\CreateInvoiceTypeInstallmentToOrder" />
+    </event>
+</config>
+

@@ -1,0 +1,23 @@
+<!-- ko -->
+    <!-- ko if: isDisplayed() -->
+    <table class="data table table-totals">
+        <caption class="table-caption" data-bind="i18n: 'Amount'"></caption>
+        <tbody>
+        <tr class="installment totals">
+            <div style="text-align: center"><img data-bind="attr: { src: require.toUrl(logo)}"/></div>
+        </tr>
+        <tr class="installment totals">
+            <div style="text-align: center;"><strong style="color: #e71b5a" data-bind="text: getDescription()"></strong></div>
+        </tr>
+        <tr class="installment totals">
+            <th class="mark" scope="row">
+                <strong data-bind="i18n: title"></strong>
+            </th>
+            <td data-bind="attr: {'data-th': title}" class="amount">
+                <strong><span class="price" data-bind="text: getValue()"></span></strong>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <!-- /ko -->
+<!-- /ko -->

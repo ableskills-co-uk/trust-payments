@@ -1,0 +1,77 @@
+<style>
+    #st-card-number-iframe, #st-expiration-date-iframe, #st-security-code-iframe {height: 90px;}
+    #st-expiration-date-iframe, #st-security-code-iframe {width: 100%;}
+    #security_expiry_container{width:300px; height:100px;}
+    .float-left{float:left;}
+    .half-width{width:135px;}
+    .padding-right{padding:0 30px 0 0;}
+    .clear-both{clear:both;}
+    .separator {
+        display: flex;
+        align-items: center;
+        text-align: center;
+    }
+    .separator::before, .separator::after {
+        content: '';
+        flex: 1;
+        border-bottom: 1px solid #d4d9dd;
+    }
+    .separator::before {
+        margin-right: .25em;
+    }
+    .separator::after {
+        margin-left: .25em;
+    }
+</style>
+<div id="st-notification-frame"></div>
+<div class="wallet-button" style="width: 50%; display: flex">
+    <div id="st-visa-checkout" style="width: 20%;margin-top: 8px; display: none"></div>
+    <!-- ko if: enablePayMentPayPal()-->
+    <div class="payment-method-paypal" style="display: none">
+        <!-- PayPal Logo -->
+        <table border="0" cellpadding="10" cellspacing="0" align="center">
+            <tr>
+                <td align="center">
+                    <a data-bind="click: getUrlToPayPal">
+                        <img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png"
+                             border="0" alt="PayPal Logo"/>
+                    </a>
+                </td>
+            </tr>
+        </table>
+        <!-- PayPal Logo -->
+    </div>
+    <!-- /ko -->
+    <div id="st-apple-pay" style="width: 20%; display: none;margin-top: 8px"></div>
+</div>
+<div id="separator" style="width: 50%"></div>
+<form id="st-form" data-bind="attr:{action: getCardUrl()}" method="POST">
+    <div id="st-card-number" class="st-card-number"></div>
+    <div id="security_expiry_container">
+        <div id="st-expiration-date" class="half-width float-left padding-right"></div>
+        <div id="st-security-code" class="half-width float-left"></div>
+    </div>
+    <!-- ko if: checkRenderAnimatedCard()-->
+    <div id="st-animated-card" class="st-animated-card-wrapper" style="overflow-y: hidden;height: 330px" ></div>
+    <!-- /ko -->
+    <div class="clear-both"></div>
+    <div class="payment-method-content">
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button style="display: none" type="submit" id="st-form__submit" class="st-form__submit" form="st-form">
+                    Pay securely
+                </button>
+                <div class="st-wallet-button"></div>
+            </div>
+        </div>
+    </div>
+</form>
+<button id="Continue" data-bind="
+                        click: buttonFake,
+                        attr: {title: $t('Continue')},
+                        ">
+    <span data-bind="i18n: 'Continue'"></span>
+</button>
+<div data-bind="afterRender: buttonFake">
+</div>
+

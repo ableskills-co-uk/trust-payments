@@ -1,0 +1,95 @@
+<?php
+    /* @var \Magento\Sales\Block\Adminhtml\Order\Creditmemo\Create\Items $block */
+   $payment = $block->getCreditmemo()->getOrder()->getPayment()->getData();
+   $checkRefundOnline = $this->getRequest()->getParam('invoice_id');
+   if (isset($payment['additional_information']) && isset($checkRefundOnline) && isset($payment['additional_information']['multishipping_data'])):
+      if($payment['method'] == 'secure_trading'){
+	      $data = [
+		      'transactionreference' => $payment['additional_information']['transactionreference'],
+		      'currencyiso3a' => $payment['additional_information']['secure_trading_data']['currencyiso3a'],
+		      'sitereference' => $payment['additional_information']['secure_trading_data']['sitereference']
+	      ];
+      }elseif ($payment['method'] == 'api_secure_trading'){
+	      $data = [
+		      'transactionreference' => $payment['additional_information']['transactionreference'],
+		      'currencyiso3a' => $payment['additional_information']['secure_trading_data']['currencyiso3a'],
+		      'sitereference' => $payment['additional_information']['secure_trading_data']['sitereference']
+	      ];
+      }
+       $data = json_encode($data);
+       $baseUrl = $block->getBaseUrl().'securetrading/requesturl_settlestatus/';
+?>
+<div id="secure-trading-popup"></div>
+
+<script>
+    require([
+        'jquery',
+        'Magento_Ui/js/modal/modal',
+        'Magento_Ui/js/modal/alert'
+    ],function ($,modal,alert) {
+       'use strict';
+       var STCheckSettleStatus = function () {
+            $.ajax({
+                url: '<?= $baseUrl ?>',
+                data: {data : '<?= $data ?>'},
+                type: "POST",
+                dataType: "json",
+                showLoader: true,
+            }).done(function (response) {
+                var getResponse = response.responses.shift();
+                var errorcode = getResponse['errorcode'];
+                var errormessage = getResponse['errormessage'];
+                if (errorcode == 0 && errormessage == "Ok")
+                {
+                    var records = getResponse['records'].shift();
+                    var settleStatusAllow = [0,1,100];
+                    if (typeof records['settlestatus'] != 'undefined' && settleStatusAllow.includes(parseInt(records['settlestatus'])))
+                    {
+                        alert('cheeckeed');
+                        var noticeText = records['settlestatus'] == 0
+                            ? $.mage.__('Transaction is not settled. If you continue to refund, only this order is refunded and the transaction will be updated.')
+                            : $.mage.__('Transaction is settled. Only this order is refunded.');
+                        var popupSetting = {
+                            type: 'popup',
+                            responsive: true,
+                            title: noticeText,
+                            buttons: [
+                                {
+                                    text: $.mage.__('Refund'),
+                                    class: 'save securetrading-submit-button refund primary',
+                                    click: function () {
+                                        disableElements('securetrading-submit-button');
+                                        submitCreditMemo();
+                                        $('body').trigger('processStart');
+                                    }
+                                },
+                                {
+                                    text: $.mage.__('Cancel'),
+                                    class: 'action-secondary action-dismiss',
+                                    click: function () {
+                                        this.closeModal();
+                                    }
+                                }
+                            ]
+                        };
+                        var popup = modal(popupSetting,$('#secure-trading-popup'));
+                        $('#secure-trading-popup').modal('openModal');
+                    }
+                }
+                else
+                {
+                    alert({
+                        title: $.mage.__('Something went wrong'),
+                        autoOpen: true,
+                    });
+                }
+            });
+        };
+
+       $('[data-ui-id="order-items-submit-button"]').click(function (){
+           STCheckSettleStatus()
+       })
+    });
+</script>
+
+<?php endif; ?>

@@ -1,0 +1,117 @@
+<?php
+$collectionSubsriptiton = $block->getCollection();
+$parentId = $block->getParentId();
+?>
+<?php // read collection as magento1.x and display in list
+if ($collectionSubsriptiton && empty($parentId)){ ?>
+<div class="table-subs orders-history">
+    <table class="data table table-order-items history" id="my-subs-table">
+        <thead>
+        <tr>
+            <th scope="col" class="col id" hidden="hidden"><?php echo __('ID') ?></th>
+            <th scope="col" class="col orderid"><?php echo __('Order Id') ?></th>
+            <th scope="col" class="col payment"><?php echo __('Transaction details') ?></th>
+            <th scope="col" class="col status"><?php echo __('Status') ?></th>
+            <th scope="col" class="col create at"><?php echo __('Create At') ?></th>
+            <th scope="col" class="col action"><?php echo __('Action') ?></th>
+            <th scope="col" class="col ">&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($collectionSubsriptiton as $_datarecord): ?>
+            <tr>
+                <td class="col id" id="entity_id" hidden="hidden"><?php echo $_datarecord->getData('id') ?></td>
+                <td class="col order id"><?php echo $_datarecord->getOrderId() ?></td>
+                <td class="col status"><?= __($block->getDescriptionSubs($_datarecord->getSkipTheFirstPayment(), $_datarecord->getFrequency(), $_datarecord->getUnit(), $_datarecord->getFinalNumber(), $_datarecord->getType(), $_datarecord->getOrderId())) ?></td>
+                <?php if ($_datarecord->getStatus() == 0) { ?>
+                    <td class="col status"><?= __('Processing') ?></td>
+                <?php } else if ($_datarecord->getStatus() == 1){ ?>
+                    <td class="col status"><?= __('Completed') ?></td>
+                <?php } else { ?>
+                    <td class="col status"><?= __('Cancelled') ?></td>
+				<?php } ?>
+                <td class="col date"><?php echo $block->formatDate($_datarecord->getCreatedAt()) ?></td>
+                <td class="col action">
+                    <a class="viewSubs" href="<?php echo $block->getBaseUrl().'securetrading/subscription/view/order_id/'.$_datarecord->getOrderId()?>"><?= __("View"); ?></a>
+                   <?php if ($_datarecord->getStatus() == 0) {?>
+                    <a class="cancelSubs" subs-id="<?php echo $_datarecord->getData('id'); ?>" style="color: red" href="#"><?= __("Cancel"); ?></a>
+                    <?php } ?>
+                </td>
+            </tr>
+        <?php endforeach;?>
+        </tbody>
+    </table>
+</div>
+<?php }elseif ($collectionSubsriptiton && !empty($parentId)) {?>
+<div class="modal-subs-detail" id="modal-subs-detail">
+    <table class="data table table-order-items history" id="my-subs-detail-table">
+        <thead>
+        <tr>
+            <th scope="col" class="col orderid"><?php echo __('Order Id') ?></th>
+            <th scope="col" class="col number"><?php echo __('Subscription Number') ?></th>
+            <th scope="col" class="col create at"><?php echo __('Create At') ?></th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($collectionSubsriptiton as $_datarecord): ?>
+        <tr>
+            <td class="col id" id="entity_id"><?php echo $_datarecord->getOrderId() ?></td>
+            <td class="col number"><?php echo $_datarecord->getNumber() ?></td>
+            <td class="col date"><?php echo $block->formatDate($_datarecord->getCreatedAt()) ?></td>
+        </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+<?php } ?>
+<?php if ($block->getPagerHtml()): ?>
+    <div class="order-products-toolbar toolbar bottom"
+         style="margin-top: 30px"><?php echo $block->getPagerHtml(); ?></div>
+<?php endif ?>
+<script type="text/x-magento-init">
+    {
+        "#modal-subs-detail": {
+            "Magento_Ui/js/core/app": {
+               "components": {
+                    "modal-subs-detail": {
+                        "component": "SecureTrading_Trust/js/account/subscription"
+                    }
+                }
+            }
+        }
+    }
+</script>
+<script>
+    require([
+            'jquery',
+            'Magento_Ui/js/modal/confirm'
+        ],
+        function ($, confirmation) {
+            $('.cancelSubs').on('click', function (e) {
+                e.preventDefault();
+                var self = this;
+                confirmation({
+                    title: 'Permanently stop subscription',
+                    content: 'If you continue, all subsequent transactions will be stopped. Do you want to stop this subscription?',
+                    actions: {
+                        confirm: function () {
+                            window.top.location.href= '<?php echo $block->getBaseUrl() . 'securetrading/subscription/cancel/subs_id/'?> ' + $(self).attr("subs-id");
+                        }
+                    },
+                    buttons: [{
+                        text: $.mage.__('Cancel'),
+                        class: 'action-secondary action-dismiss',
+                        click: function (event) {
+                            this.closeModal(event);
+                        }
+                    }, {
+                        text: $.mage.__('Continue'),
+                        class: 'action primary action-accept',
+                        click: function (event) {
+                            this.closeModal(event, true);
+                        }
+                    }]
+                });
+            });
+        });
+</script>

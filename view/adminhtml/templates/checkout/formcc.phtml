@@ -1,0 +1,16 @@
+<div id="api-formcc" data-bind="scope:'api-formcc'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+    {
+        "#api-formcc": {
+            "Magento_Ui/js/core/app": {
+               "components": {
+                    "api-formcc": {
+                        "component": "SecureTrading_Trust/js/view/payment/method-renderer/multishipping-form-cc"
+                    }
+                }
+            }
+        }
+    }
+</script>
