@@ -4,7 +4,6 @@ namespace SecureTrading\Trust\Controller\Adminhtml\ApiSecureTrading;
 
 use Magento\Checkout\Model\Session;
 use Magento\Framework\App\Action\Context;
-use Magento\Framework\App\CsrfAwareActionInterface;
 use Magento\Framework\App\Request\InvalidRequestException;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Exception\LocalizedException;
@@ -27,7 +26,7 @@ use SecureTrading\Trust\Model\SubscriptionFactory;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Message\ManagerInterface;
 
-class CardUrl extends Response implements CsrfAwareActionInterface
+class CardUrl extends Response
 {
 
 	protected $jsonFactory;

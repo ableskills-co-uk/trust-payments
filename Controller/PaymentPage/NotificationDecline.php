@@ -1,18 +1,14 @@
 <?php
-
 namespace SecureTrading\Trust\Controller\PaymentPage;
-
-use Magento\Framework\App\CsrfAwareActionInterface;
 use Magento\Framework\App\Request\InvalidRequestException;
 use Magento\Framework\App\RequestInterface;
 use Magento\Sales\Model\Order;
-
 /**
  * Class NotificationDecline
  *
  * @package SecureTrading\Trust\Controller\PaymentPage
  */
-class NotificationDecline extends Response implements CsrfAwareActionInterface
+class NotificationDecline extends Response
 {
 	/**
 	 * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface

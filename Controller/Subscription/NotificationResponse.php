@@ -1,18 +1,14 @@
 <?php
-
 namespace SecureTrading\Trust\Controller\Subscription;
-
-use Magento\Framework\App\CsrfAwareActionInterface;
 use Magento\Framework\App\Request\InvalidRequestException;
 use Magento\Framework\App\RequestInterface;
 use Magento\Sales\Model\Order;
-
 /**
  * Class NotificationResponse
  *
  * @package SecureTrading\Trust\Controller\Subscription
  */
-class NotificationResponse extends \SecureTrading\Trust\Controller\PaymentPage\Response implements CsrfAwareActionInterface
+class NotificationResponse extends \SecureTrading\Trust\Controller\PaymentPage\Response
 {
 	/**
 	 * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
