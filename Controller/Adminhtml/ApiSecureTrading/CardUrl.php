@@ -1,10 +1,7 @@
 <?php
-
 namespace SecureTrading\Trust\Controller\Adminhtml\ApiSecureTrading;
-
 use Magento\Checkout\Model\Session;
 use Magento\Framework\App\Action\Context;
-use Magento\Framework\App\Request\InvalidRequestException;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Serialize\Serializer\Json;
@@ -145,17 +142,6 @@ class CardUrl extends Response
 			$this->logger->addDebug('API SecureTrading Error:' . $e->getMessage());
 			throw new \LocalizedException('Something went wrong');
 		}
-	}
-
-
-	public function createCsrfValidationException(RequestInterface $request): ?InvalidRequestException
-	{
-		return null;
-	}
-
-	public function validateForCsrf(RequestInterface $request): ?bool
-	{
-		return true;
 	}
 
 	public function decodeJWT($jwtResponse)

@@ -1,6 +1,5 @@
 <?php
 namespace SecureTrading\Trust\Controller\PaymentPage;
-use Magento\Framework\App\Request\InvalidRequestException;
 use Magento\Framework\App\RequestInterface;
 use Magento\Sales\Model\Order;
 use SecureTrading\Trust\Helper\Data;
@@ -76,15 +75,5 @@ class NotificationAll extends Response
 			$this->messageManager->addError(__($exception->getMessage()));
 		}
 		$this->getResponse()->setHttpResponseCode(200);
-	}
-
-	public function createCsrfValidationException(RequestInterface $request): ?InvalidRequestException
-	{
-		return null;
-	}
-
-	public function validateForCsrf(RequestInterface $request): ?bool
-	{
-		return true;
 	}
 }

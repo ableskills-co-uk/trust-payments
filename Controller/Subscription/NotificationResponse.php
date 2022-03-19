@@ -1,6 +1,5 @@
 <?php
 namespace SecureTrading\Trust\Controller\Subscription;
-use Magento\Framework\App\Request\InvalidRequestException;
 use Magento\Framework\App\RequestInterface;
 use Magento\Sales\Model\Order;
 /**
@@ -56,24 +55,6 @@ class NotificationResponse extends \SecureTrading\Trust\Controller\PaymentPage\R
 			$this->messageManager->addError(__($exception->getMessage()));
 		}
 		$this->getResponse()->setHttpResponseCode(200);
-	}
-
-	/**
-	 * @param RequestInterface $request
-	 * @return InvalidRequestException|null
-	 */
-	public function createCsrfValidationException(RequestInterface $request): ?InvalidRequestException
-	{
-		return null;
-	}
-
-	/**
-	 * @param RequestInterface $request
-	 * @return bool|null
-	 */
-	public function validateForCsrf(RequestInterface $request): ?bool
-	{
-		return true;
 	}
 
 	public function setCommentParentOrder($parentOrder, $responseParams){

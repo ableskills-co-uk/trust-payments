@@ -1,10 +1,7 @@
 <?php
-
 namespace SecureTrading\Trust\Controller\ApiSecureTrading;
-
 use Magento\Checkout\Model\Session;
 use Magento\Framework\App\Action\Context;
-use Magento\Framework\App\Request\InvalidRequestException;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Exception\LocalizedException;
@@ -86,16 +83,5 @@ class GetUrlRedirectPayPal extends Response
 			$this->logger->addDebug('API SecureTrading Error:' . $e->getMessage());
 			throw new \Magento\Framework\Exception\LocalizedException(__($e->getMessage()));
 		}
-	}
-
-
-	public function createCsrfValidationException(RequestInterface $request): ?InvalidRequestException
-	{
-		return null;
-	}
-
-	public function validateForCsrf(RequestInterface $request): ?bool
-	{
-		return true;
 	}
 }

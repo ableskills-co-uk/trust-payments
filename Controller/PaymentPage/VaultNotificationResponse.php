@@ -1,12 +1,8 @@
 <?php
-
 namespace SecureTrading\Trust\Controller\PaymentPage;
-
-use Magento\Framework\App\Request\InvalidRequestException;
 use Magento\Framework\App\RequestInterface;
 use Magento\Sales\Model\Order;
 use SecureTrading\Trust\Helper\Data;
-
 /**
  * Class NotificationResponse
  *
