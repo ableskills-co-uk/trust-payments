@@ -28,9 +28,9 @@ class Config extends \Magento\Payment\Gateway\Config\Config
 		ScopeConfigInterface $scopeConfig,
 		\Magento\Framework\Module\FullModuleList $fullModuleList,
 		EncryptorInterface $enc,
+		\Magento\Framework\Registry $registry,
 		$methodCode = null,
-		$pathPattern = \Magento\Payment\Gateway\Config\Config::DEFAULT_PATH_PATTERN,
-		\Magento\Framework\Registry $registry
+		$pathPattern = \Magento\Payment\Gateway\Config\Config::DEFAULT_PATH_PATTERN
 	) {
 		parent::__construct($scopeConfig, $methodCode, $pathPattern);
 		$this->fullModuleList = $fullModuleList;
