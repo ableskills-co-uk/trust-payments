@@ -110,7 +110,8 @@ class Vault extends \Magento\Framework\App\Action\Action
 
 			}
             /** @var \Firebase\JWT\JWT $jwt */
-            $jwt = $this->jwt->encode($payload,$secretkey);
+            # 2022-03-18 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+            $jwt = $this->jwt->encode($payload, $secretkey, 'HS256');
             $this->logger->addDebug('--- JWT : ' . $jwt);
 			$data['jwt'] = $jwt;
             $this->jsonFactory->setData($data);
