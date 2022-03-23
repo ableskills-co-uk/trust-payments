@@ -10,7 +10,7 @@ bin/magento setup:upgrade
 bin/magento cache:enable
 bin/magento setup:di:compile
 bin/magento cache:clean
-rm -rf pub/static/* var/cache var/page_cache var/view_preprocessed
+rm -rf pub/static/* var/view_preprocessed
 bin/magento setup:static-content:deploy \
 	--area adminhtml \
 	--theme Ableskills/default \
@@ -36,7 +36,7 @@ bin/magento setup:upgrade
 bin/magento cache:enable
 bin/magento setup:di:compile
 bin/magento cache:clean
-rm -rf pub/static/* var/cache var/page_cache var/view_preprocessed
+rm -rf pub/static/* var/view_preprocessed
 bin/magento setup:static-content:deploy \
 	--area adminhtml \
 	--theme Ableskills/default \
