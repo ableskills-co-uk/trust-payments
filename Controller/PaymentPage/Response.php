@@ -173,7 +173,7 @@ class Response extends \Magento\Framework\App\Action\Action
 		$this->logger->debug('--- Execute Response ---');
 		# 2022-03-23 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
 		# The previous code:
-		#	$isUsedIframe = 0;		
+		#	$isUsedIframe = 0;
 		$isUsedIframe = 1;
 		try {
 			$responseParams = $this->getRequest()->getParams();
@@ -248,8 +248,12 @@ class Response extends \Magento\Framework\App\Action\Action
 	 * @param array $data
 	 * @return bool
 	 */
-	protected function isValid(array $data)
-	{
+	protected function isValid(array $data) {
+		# 2022-03-23 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+		# «Site security» is not enabled on the ableskills.co.uk website,
+		# so Trust Payments does not return the `responsesitesecurity` parameter.
+		# https://help.trustpayments.com/hc/en-us/articles/4402734345361
+		return true;
 		$string = '';
 		if (empty($data['responsesitesecurity'])) {
 			return false;
