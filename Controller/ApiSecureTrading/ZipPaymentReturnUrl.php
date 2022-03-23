@@ -17,7 +17,7 @@ class ZipPaymentReturnUrl extends Action
     protected $authorizeAndCaptureCommand;
     protected $orderSender;
 
-    public function __construct(
+    function __construct(
         \Magento\Sales\Model\Order\Email\Sender\OrderSender $orderSender,
         \SecureTrading\Trust\Gateway\Command\AuthorizeAndCaptureCommand $authorizeAndCaptureCommand,
         \SecureTrading\Trust\Helper\Logger\Logger $logger,
@@ -37,7 +37,7 @@ class ZipPaymentReturnUrl extends Action
         $this->orderSender = $orderSender;
     }
 
-    public function execute()
+    function execute()
     {
         try {
             /** @var \Magento\Sales\Model\Order $order */

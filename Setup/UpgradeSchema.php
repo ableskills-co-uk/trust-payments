@@ -25,7 +25,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
 	 * @param ModuleContextInterface $context
 	 * @throws \Zend_Db_Exception
 	 */
-	public function upgrade(SchemaSetupInterface $setup,
+	function upgrade(SchemaSetupInterface $setup,
 							ModuleContextInterface $context)
 	{
 		if (version_compare($context->getVersion(), '0.0.4') < 0) {

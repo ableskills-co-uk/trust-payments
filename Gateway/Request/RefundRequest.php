@@ -28,7 +28,7 @@ class RefundRequest implements BuilderInterface
      * @param ConfigInterface $config
      * @param Logger $logger
      */
-    public function __construct(
+    function __construct(
         ConfigInterface $config,
         Logger $logger
     ) {
@@ -41,7 +41,7 @@ class RefundRequest implements BuilderInterface
      * @return array
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function build(array $buildSubject)
+    function build(array $buildSubject)
     {
         if (!isset($buildSubject['payment'])
             || !$buildSubject['payment'] instanceof PaymentDataObjectInterface

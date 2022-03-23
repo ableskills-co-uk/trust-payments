@@ -12,7 +12,7 @@ class NotificationResponse extends \SecureTrading\Trust\Controller\PaymentPage\R
 	/**
 	 * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
 	 */
-	public function execute()
+	function execute()
 	{
 		$this->logger->debug('--- Subscription Response ---');
 		try {
@@ -57,13 +57,13 @@ class NotificationResponse extends \SecureTrading\Trust\Controller\PaymentPage\R
 		$this->getResponse()->setHttpResponseCode(200);
 	}
 
-	public function setCommentParentOrder($parentOrder, $responseParams){
+	function setCommentParentOrder($parentOrder, $responseParams){
 		$grandTotal = $parentOrder->getBaseGrandTotal();
 		$parentOrder->addStatusHistoryComment(__('Captured amount of £%1 online. Transaction ID: "%2"', $grandTotal, $responseParams['transactionreference']), true);
 		$parentOrder->save();
 	}
 
-	public function setAdditionalInformation($order, $reponseParams){
+	function setAdditionalInformation($order, $reponseParams){
 		$payment = $order->getPayment();
 		foreach ($reponseParams as $key => $param) {
 			$payment->setAdditionalInformation($key, $param);

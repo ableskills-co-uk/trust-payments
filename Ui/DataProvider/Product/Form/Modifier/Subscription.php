@@ -34,7 +34,7 @@ class  Subscription extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifi
 	 * @param \Magento\Framework\Serialize\Serializer\Json $json
 	 * @param \Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable $typeConfigurable
 	 */
-	public function __construct(LocatorInterface $locator,
+	function __construct(LocatorInterface $locator,
 								   \Magento\Framework\Serialize\Serializer\Json $json,
 								   \Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable $typeConfigurable)
 	{
@@ -47,7 +47,7 @@ class  Subscription extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifi
 	 * @param array $data
 	 * @return array
 	 */
-	public function modifyData(array $data)
+	function modifyData(array $data)
 	{
 		$product = $this->locator->getProduct();
 		$productId = $product->getId();
@@ -76,7 +76,7 @@ class  Subscription extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifi
 	 * @param array $meta
 	 * @return array
 	 */
-	public function modifyMeta(array $meta)
+	function modifyMeta(array $meta)
 	{
 		return $meta;
 	}

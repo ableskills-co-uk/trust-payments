@@ -30,7 +30,7 @@ class RedirectToProductDetail implements ObserverInterface
 	 * @param Cart $cart
 	 * @param SerializerInterface $serializer
 	 */
-	public function __construct(Cart $cart, SerializerInterface $serializer)
+	function __construct(Cart $cart, SerializerInterface $serializer)
 	{
 		$this->cart = $cart;
 		$this->serializer = $serializer;
@@ -40,7 +40,7 @@ class RedirectToProductDetail implements ObserverInterface
 	 * @param Observer $observer
 	 * @throws \Magento\Framework\Exception\LocalizedException
 	 */
-	public function execute(Observer $observer)
+	function execute(Observer $observer)
 	{
 		$product = $observer->getProduct();
 		$request = $observer->getInfo();

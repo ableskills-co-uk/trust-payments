@@ -45,7 +45,7 @@ class UpdateAmountResponseHandle implements HandlerInterface
 	 * @param CollectionFactory $collectionFactory
 	 * @param Logger $logger
 	 */
-	public function __construct(
+	function __construct(
 		MultiShippingFactory $multiShippingFactory,
 		SerializerInterface $serializer,
 		CollectionFactory $collectionFactory,
@@ -65,7 +65,7 @@ class UpdateAmountResponseHandle implements HandlerInterface
 	 * @param array $response
 	 * @throws \Magento\Framework\Exception\LocalizedException
 	 */
-	public function handle(array $handlingSubject, array $response){
+	function handle(array $handlingSubject, array $response){
 		$payment = $handlingSubject['payment']->getPayment();
 		if($payment['method'] == 'api_secure_trading' && isset($payment->getAdditionalInformation()['multishipping_data'])){
 			$mainAmount = $payment->getAdditionalInformation()['multishipping_data']['mainamount'];
@@ -86,7 +86,7 @@ class UpdateAmountResponseHandle implements HandlerInterface
 	 * @param $amountUpdate
 	 * @throws LocalizedException
 	 */
-	public function setAmountAfterUpdate($payment, $amountUpdate)
+	function setAmountAfterUpdate($payment, $amountUpdate)
 	{
 		if (($setId = $payment->getAdditionalInformation('multishipping_set_id')) && $amountUpdate > 0)
 		{

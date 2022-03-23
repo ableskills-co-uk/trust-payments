@@ -24,7 +24,7 @@ class Index extends \Magento\Framework\App\Action\Action
 	 * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
 	 * @param \Magento\Framework\Registry $registry
 	 */
-	public function __construct(
+	function __construct(
 		\Magento\Framework\App\Action\Context $context,
 		\Magento\Framework\View\Result\PageFactory $resultPageFactory,
 		\Magento\Framework\Registry $registry
@@ -37,7 +37,7 @@ class Index extends \Magento\Framework\App\Action\Action
 	/**
 	 * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
 	 */
-	public function execute()
+	function execute()
 	{
 		$data       = $this->_request->getParams();
 		$resultPage = $this->resultPageFactory->create();

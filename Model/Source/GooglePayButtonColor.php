@@ -6,7 +6,7 @@ namespace SecureTrading\Trust\Model\Source;
 
 class GooglePayButtonColor implements \Magento\Framework\Option\ArrayInterface
 {
-    public function toOptionArray()
+    function toOptionArray()
     {
         return [
             [

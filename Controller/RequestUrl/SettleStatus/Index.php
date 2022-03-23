@@ -35,7 +35,7 @@ class Index extends Action
      * @param Config $config
      * @param Context $context
      */
-    public function __construct(Logger $logger,
+    function __construct(Logger $logger,
 								TransactionDetailHelper $helper,
 								Config $config,
 								Context $context)
@@ -49,7 +49,7 @@ class Index extends Action
     /**
      * @return bool|\Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Json|\Magento\Framework\Controller\ResultInterface
      */
-    public function execute()
+    function execute()
     {
         try
         {

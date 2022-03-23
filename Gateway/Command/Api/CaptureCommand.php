@@ -26,13 +26,13 @@ class CaptureCommand extends AbstractCommand
 	 */
 	protected $serializer;
 
-	public function __construct(Registry $coreRegistry, BuilderInterface $requestBuilder, TransferFactoryInterface $transferFactory, Logger $logger, ConfigInterface $config, HandlerInterface $handler = null, ValidatorInterface $validator = null, ErrorMessageMapperInterface $errorMessageMapper = null, SerializerInterface $serializer)
+	function __construct(Registry $coreRegistry, BuilderInterface $requestBuilder, TransferFactoryInterface $transferFactory, Logger $logger, ConfigInterface $config, HandlerInterface $handler = null, ValidatorInterface $validator = null, ErrorMessageMapperInterface $errorMessageMapper = null, SerializerInterface $serializer)
 	{
 		parent::__construct($coreRegistry, $requestBuilder, $transferFactory, $logger, $config, $handler, $validator, $errorMessageMapper);
 		$this->serializer = $serializer;
 	}
 
-	public function execute(array $commandSubject)
+	function execute(array $commandSubject)
 	{
 		$paymentPO = $commandSubject['payment'];
 		if (!empty($paymentPO)) {
@@ -71,7 +71,7 @@ class CaptureCommand extends AbstractCommand
 		}
 	}
 
-	public function processCapture($commandSubject)
+	function processCapture($commandSubject)
 	{
 		// @TODO implement exceptions catching
 		//Send API to Update transaction
@@ -98,7 +98,7 @@ class CaptureCommand extends AbstractCommand
 		}
 	}
 
-	public function validateFreeTransaction($payment)
+	function validateFreeTransaction($payment)
 	{
 		$skipthefirstpayment = $payment->getAdditionalInformation('skipthefirstpayment');
 		$accounttypedescription = $payment->getAdditionalInformation('accounttypedescription');

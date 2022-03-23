@@ -38,7 +38,7 @@ class Response extends \Magento\Backend\App\Action
 
 	protected $messageManager;
 
-    public function __construct(
+    function __construct(
         Context $context,
         ConfigInterface $config,
         \Magento\Sales\Model\OrderFactory $orderFactory,
@@ -59,7 +59,7 @@ class Response extends \Magento\Backend\App\Action
     /**
      * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
      */
-    public function execute()
+    function execute()
     {
         $isUsedIframe = 0;
         try {

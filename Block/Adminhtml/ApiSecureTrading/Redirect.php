@@ -48,7 +48,7 @@ class Redirect extends Template
 	 * @param \Magento\Framework\UrlInterface $urlBuilder
 	 * @param array $data
 	 */
-	public function __construct(
+	function __construct(
 		Template\Context $context,
 		\Magento\Sales\Model\OrderFactory $orderFactory,
 		\Magento\Framework\Serialize\Serializer\Json $jsonDecode,
@@ -68,7 +68,7 @@ class Redirect extends Template
 	/**
 	 * @return array
 	 */
-	public function getOrderData()
+	function getOrderData()
 	{
 		$dataBuilder         = [];
 		$dataBuilder['orderId'] = $this->getRequest()->getParam('order_id');
@@ -90,7 +90,7 @@ class Redirect extends Template
 	 * @param array $keys
 	 * @return bool|false|string
 	 */
-	public function jsonDecode(array $keys = [])
+	function jsonDecode(array $keys = [])
 	{
 		return $this->jsonDecode->serialize($keys);
 	}
@@ -98,7 +98,7 @@ class Redirect extends Template
 	/**
 	 * @return bool
 	 */
-	public function isRedirectedToOrderGrid()
+	function isRedirectedToOrderGrid()
 	{
 		if (!empty($this->getRequest()->getParam('redirect_path'))) {
 			return true;

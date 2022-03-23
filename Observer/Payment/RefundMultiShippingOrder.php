@@ -40,7 +40,7 @@ class RefundMultiShippingOrder extends AbstractOperationObserver implements Obse
      * @param Registry $coreRegistry
      * @param Logger $logger
      */
-    public function __construct(RefundInvoiceInterface $refundInvoice,
+    function __construct(RefundInvoiceInterface $refundInvoice,
 								Invoice $invoice,
 								MultiShippingFactory $multiShippingFactory,
 								CollectionFactory $collectionFactory,
@@ -57,7 +57,7 @@ class RefundMultiShippingOrder extends AbstractOperationObserver implements Obse
      * @param Observer $observer
      * @throws LocalizedException
      */
-    public function execute(Observer $observer)
+    function execute(Observer $observer)
     {
         $flag = $this->coreRegistry->registry('refund_multishipping');
         $isSettled = $this->coreRegistry->registry('is_settled');
@@ -96,7 +96,7 @@ class RefundMultiShippingOrder extends AbstractOperationObserver implements Obse
      * Refund Order Related
      * @param $order
      */
-    public function refundOrderRelated($order)
+    function refundOrderRelated($order)
     {
         $invoiceIncrementId = $order->getInvoiceCollection()->getData()[0]['increment_id'];
         $invoiceObject = $this->invoice->loadByIncrementId($invoiceIncrementId);

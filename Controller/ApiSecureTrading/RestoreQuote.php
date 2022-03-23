@@ -47,7 +47,7 @@ class RestoreQuote extends \Magento\Framework\App\Action\Action
      * @param CheckoutSession $checkoutSession
      * @param ResourceOrder $resourceOrder
      */
-    public function __construct(
+    function __construct(
         Context $context,
         \Magento\Sales\Model\OrderFactory $orderFactory,
         \Magento\Framework\Controller\Result\Json $json,
@@ -67,7 +67,7 @@ class RestoreQuote extends \Magento\Framework\App\Action\Action
      * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Json|\Magento\Framework\Controller\ResultInterface
      * @throws \Magento\Framework\Exception\AlreadyExistsException
      */
-    public function execute()
+    function execute()
     {
         $orderId = $this->getRequest()->getParam('orderId');
         $order = $this->orderFactory->create()->load($orderId);
@@ -82,7 +82,7 @@ class RestoreQuote extends \Magento\Framework\App\Action\Action
      * @param $order
      * @param $reponseParams
      */
-    public function setAdditionalInformation($order, $reponseParams){
+    function setAdditionalInformation($order, $reponseParams){
         $payment = $order->getPayment();
         foreach ($reponseParams as $key => $param) {
             $payment->setAdditionalInformation($key, $param);

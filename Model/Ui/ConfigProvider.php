@@ -112,7 +112,7 @@ class ConfigProvider implements ConfigProviderInterface
      * @param \SecureTrading\Trust\Helper\SubscriptionHelper $subscriptionHelper
      * @param \Magento\Payment\Model\CcConfig $ccConfig
      */
-    public function __construct(
+    function __construct(
         \Magento\Framework\Locale\Resolver $localeResolver,
 	    \Magento\Framework\UrlInterface $urlBuilder,
 	    \Psr\Log\LoggerInterface $logger,
@@ -168,7 +168,7 @@ class ConfigProvider implements ConfigProviderInterface
 	 *
 	 * @return array
 	 */
-	public function getConfig()
+	function getConfig()
 	{
 		return [
 			'payment' => [
@@ -237,7 +237,7 @@ class ConfigProvider implements ConfigProviderInterface
     /**
      * @return false|string
      */
-    public function getCurrentLocale()
+    function getCurrentLocale()
     {
         $currentLocaleCode = $this->localeResolver->getLocale();
         $languageCode = strstr($currentLocaleCode, '_', true);

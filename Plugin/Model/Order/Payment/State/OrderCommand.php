@@ -20,7 +20,7 @@ class OrderCommand
      * @param OrderInterface $order
      * @return \Magento\Framework\Phrase|mixed
      */
-    public function aroundExecute(
+    function aroundExecute(
         $subject,
         \Closure $proceed,
         OrderPaymentInterface $payment,

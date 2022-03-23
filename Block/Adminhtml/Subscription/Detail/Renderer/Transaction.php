@@ -15,7 +15,7 @@ class Transaction extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Abs
 	 * @param DataObject $row
 	 * @return string
 	 */
-	public function render(DataObject $row)
+	function render(DataObject $row)
 	{
 		$html = '<a title="Go to transaction detail" target="_blank" href="https://myst.securetrading.net/transactions/singletransaction?transactionreference=' . $row->getData($this->getColumn()->getIndex()) . '">' . $row->getData($this->getColumn()->getIndex()) . '</a>';
 		return $html;

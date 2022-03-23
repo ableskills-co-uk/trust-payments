@@ -17,7 +17,7 @@ class SubscriptionStopCommand extends AbstractCommand
 	 * @return \Magento\Payment\Gateway\Command\ResultInterface|void|null
 	 * @throws CommandException
 	 */
-	public function execute(array $commandSubject)
+	function execute(array $commandSubject)
 	{
 		try {
 			$data = $this->requestBuilder->build($commandSubject);
@@ -45,7 +45,7 @@ class SubscriptionStopCommand extends AbstractCommand
 		}
 	}
 
-	public function validator($response, $commandSubject)
+	function validator($response, $commandSubject)
 	{
 		if ($this->validator !== null) {
 			$result = $this->validator->validate(
@@ -57,7 +57,7 @@ class SubscriptionStopCommand extends AbstractCommand
 		}
 	}
 
-	public function checkStatusTransaction($data)
+	function checkStatusTransaction($data)
 	{
 		$transactionDetail = $this->transferFactory->create($data['detailParent']);
 		$transactionDetailData = $transactionDetail->getSingle('responses')->getSingle(0)->getSingle('records')->getSingle(0)->getAll();

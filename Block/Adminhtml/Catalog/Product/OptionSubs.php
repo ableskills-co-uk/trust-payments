@@ -16,7 +16,7 @@ class OptionSubs extends Template
 	protected $json;
 	protected $helper;
 
-	public function __construct(Template\Context $context, ProductFactory $productFactory, Json $json, SubscriptionHelper $helper, array $data = [])
+	function __construct(Template\Context $context, ProductFactory $productFactory, Json $json, SubscriptionHelper $helper, array $data = [])
 	{
 		parent::__construct($context, $data);
 		$this->productFactory = $productFactory;
@@ -24,7 +24,7 @@ class OptionSubs extends Template
 		$this->helper = $helper;
 	}
 
-	public function getOptionSubscription()
+	function getOptionSubscription()
 	{
 		try {
 			$id = $this->_request->getParam('id');
@@ -40,13 +40,13 @@ class OptionSubs extends Template
 		}
 	}
 
-	public function decodeOptions(string $data)
+	function decodeOptions(string $data)
 	{
 		if ($data == '') return false;
 		return $this->json->unserialize($data);
 	}
 
-	public function getDescription(int $skipTheFirstPayment, int $frequency, $unit, int $finalNumber, $priceProduct, $style){
+	function getDescription(int $skipTheFirstPayment, int $frequency, $unit, int $finalNumber, $priceProduct, $style){
 		return $this->helper->getDescription($skipTheFirstPayment, $frequency, $unit, $finalNumber, $priceProduct, $style);
 	}
 }

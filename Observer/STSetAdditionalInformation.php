@@ -19,7 +19,7 @@ class STSetAdditionalInformation extends AbstractDataAssignObserver
      * @param Observer $observer
      * @return void
      */
-    public function execute(\Magento\Framework\Event\Observer $observer)
+    function execute(\Magento\Framework\Event\Observer $observer)
     {
         $data = $this->readDataArgument($observer);
 

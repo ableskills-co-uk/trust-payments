@@ -52,7 +52,7 @@ class Form extends Cc
 	 * @param Data $paymentDataHelper
 	 * @param array $data
 	 */
-	public function __construct(
+	function __construct(
 		Context $context,
 		Config $paymentConfig,
 		Quote $sessionQuote,
@@ -74,7 +74,7 @@ class Form extends Cc
 	 * Get list of available card types of order billing address country
 	 * @return array
 	 */
-	public function getCcAvailableTypes()
+	function getCcAvailableTypes()
 	{
 		$configuredCardTypes = $this->getConfiguredCardTypes();
 		return $configuredCardTypes;
@@ -96,15 +96,15 @@ class Form extends Cc
 		return array_intersect_key($types, $configCardTypes);
 	}
 
-	public function getMonths(){
+	function getMonths(){
 		return $this->getCcMonths();
 	}
 
-	public function getYears(){
+	function getYears(){
 		return $this->getCcYears();
 	}
 
-	public function getPaymentAction(){
+	function getPaymentAction(){
 		return $this->scopeConfig->getValue('payment/api_secure_trading/payment_action', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
 	}
 }

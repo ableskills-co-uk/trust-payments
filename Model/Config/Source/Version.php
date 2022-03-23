@@ -14,7 +14,7 @@ class Version implements \Magento\Framework\Option\ArrayInterface
      *
      * @return array
      */
-    public function toOptionArray()
+    function toOptionArray()
     {
         return [['value' => 1, 'label' => 1], ['value' => 2, 'label' => 2]];
     }
@@ -24,7 +24,7 @@ class Version implements \Magento\Framework\Option\ArrayInterface
      *
      * @return array
      */
-    public function toArray()
+    function toArray()
     {
         return [1 => 1, 2 => 2];
     }

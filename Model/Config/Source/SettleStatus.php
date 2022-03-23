@@ -14,7 +14,7 @@ class SettleStatus implements \Magento\Framework\Option\ArrayInterface
 	 *
 	 * @return array
 	 */
-	public function toOptionArray()
+	function toOptionArray()
 	{
 		return [
 			['value' => 0, 'label' => '0 - Pending Settlement'],

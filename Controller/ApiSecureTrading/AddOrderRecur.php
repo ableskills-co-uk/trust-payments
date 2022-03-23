@@ -14,7 +14,7 @@ class AddOrderRecur extends \Magento\Framework\App\Action\Action
 
 	protected $subscriptionHelper;
 
-	public function __construct(
+	function __construct(
 		Context $context,
 		\Magento\Sales\Model\OrderFactory $orderFactory,
 		\Magento\Framework\Controller\Result\Json $json,
@@ -26,7 +26,7 @@ class AddOrderRecur extends \Magento\Framework\App\Action\Action
 		$this->subscriptionHelper = $subscriptionHelper;
 	}
 
-	public function execute()
+	function execute()
 	{
 		$data = $this->getRequest()->getParam('reponse');
 		$data = json_decode($data);
@@ -39,7 +39,7 @@ class AddOrderRecur extends \Magento\Framework\App\Action\Action
 		$order->save();
 	}
 
-	public function setAdditionalInformation($order, $reponseParams){
+	function setAdditionalInformation($order, $reponseParams){
 		$payment = $order->getPayment();
 		foreach ($reponseParams as $key => $param) {
 			$payment->setAdditionalInformation($key, $param);

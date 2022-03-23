@@ -19,7 +19,7 @@ class Index extends Action
 	 * @param Context $context
 	 * @param PageFactory $resultPageFactory
 	 */
-	public function __construct(
+	function __construct(
 		Context $context,
 		PageFactory $resultPageFactory
 	) {
@@ -30,7 +30,7 @@ class Index extends Action
 	/**
 	 * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
 	 */
-	public function execute()
+	function execute()
 	{
 		$resultPage = $this->resultPageFactory->create();
 		$resultPage->setActiveMenu('SecureTrading_Trust::subscription');

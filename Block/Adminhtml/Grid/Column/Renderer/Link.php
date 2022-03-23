@@ -13,7 +13,7 @@ class Link extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Text
 	 * @param \Magento\Framework\DataObject $row
 	 * @return string
 	 */
-	public function _getValue(\Magento\Framework\DataObject $row)
+	function _getValue(\Magento\Framework\DataObject $row)
 	{
 		$secureTradingMethods = [
 			'secure_trading'

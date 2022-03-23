@@ -52,7 +52,7 @@ class MultiShippingHelper extends AbstractHelper
 	 * @param SessionManagerInterface $session
 	 * @param MultiShippingFactory $multiShippingFactory
 	 */
-	public function __construct(Context $context,
+	function __construct(Context $context,
 								OrderFactory $orderFactory,
 								ConfigInterface $config,
 								SerializerInterface $serializer,
@@ -72,7 +72,7 @@ class MultiShippingHelper extends AbstractHelper
 	 * @param $totalAmount
 	 * @return string
 	 */
-	public function formatMainAmount($currency, $totalAmount)
+	function formatMainAmount($currency, $totalAmount)
 	{
 		if ($currency == 'JPY') {
 			return strval(number_format($totalAmount, 0, '', ''));
@@ -84,7 +84,7 @@ class MultiShippingHelper extends AbstractHelper
 	 * @param $order
 	 * @return array
 	 */
-	public function getPaymentAdditionalInformation($order)
+	function getPaymentAdditionalInformation($order)
 	{
 		if ($order->getId()) {
 			$data = $order->getPayment()->getAdditionalInformation('secure_trading_data');
@@ -98,7 +98,7 @@ class MultiShippingHelper extends AbstractHelper
 	 * @param $data
 	 * @return mixed
 	 */
-	public function reHashData($data)
+	function reHashData($data)
 	{
 		$sitesecurity         = $this->config->getSiteSecurity($data);
 		$data['sitesecurity'] = $sitesecurity;
@@ -110,7 +110,7 @@ class MultiShippingHelper extends AbstractHelper
 	 * @return \SecureTrading\Trust\Model\MultiShipping
 	 * @throws \Exception
 	 */
-	public function saveMultiShippingData()
+	function saveMultiShippingData()
 	{
 		$orderIds      = $this->session->getOrderIds();
 		$multiShipping = $this->multiShippingFactory->create();
@@ -129,7 +129,7 @@ class MultiShippingHelper extends AbstractHelper
 	 * @param $data
 	 * @param $setId
 	 */
-	public function saveParentOrderData($orders, $data, $setId)
+	function saveParentOrderData($orders, $data, $setId)
 	{
 		$isComplete = false;
 		foreach ($orders as $order) {

@@ -17,7 +17,7 @@ class VoidMultiShippingOrder extends AbstractOperationObserver implements Observ
      * @param Observer $observer
      * @throws LocalizedException
      */
-    public function execute(Observer $observer)
+    function execute(Observer $observer)
 	{
 		$flag = $this->coreRegistry->registry('void_multishipping');
 		if ($flag != true) {

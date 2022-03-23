@@ -22,7 +22,7 @@ class Load implements ObserverInterface
 	/**
 	 * @param \Magento\Framework\Event\Observer $observer
 	 */
-	public function execute(\Magento\Framework\Event\Observer $observer)
+	function execute(\Magento\Framework\Event\Observer $observer)
 	{
 		$fullActionName = $observer->getEvent()->getFullActionName();
 

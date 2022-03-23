@@ -16,7 +16,7 @@ class SkipTheFirstPayment extends AbstractSource implements SourceInterface, Opt
 	/**
 	 * @return array
 	 */
-	public function getAllOptions()
+	function getAllOptions()
 	{
 		$result = [];
 

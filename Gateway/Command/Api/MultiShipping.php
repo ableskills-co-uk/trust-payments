@@ -26,7 +26,7 @@ class MultiShipping implements CommandInterface
 
 	protected $errorMessageMapper;
 
-	public function __construct(
+	function __construct(
 		BuilderInterface $requestBuilder,
 		HandlerInterface $handler,
 		TransferFactoryInterface $transferFactory,
@@ -43,7 +43,7 @@ class MultiShipping implements CommandInterface
 	}
 
 
-	public function execute(array $commandSubject)
+	function execute(array $commandSubject)
 	{
 		$data =  $commandSubject['data'];
 		$response = $this->transferFactory->create($data);

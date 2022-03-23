@@ -24,7 +24,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
 
     protected $registry;
 
-	public function __construct(
+	function __construct(
 		ScopeConfigInterface $scopeConfig,
 		\Magento\Framework\Module\FullModuleList $fullModuleList,
 		EncryptorInterface $enc,
@@ -87,7 +87,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
 	 * @param null $storeId
 	 * @return mixed
 	 */
-    public function getValue($field, $storeId = null)
+    function getValue($field, $storeId = null)
     {
         if (in_array($field, $this->_attribute)) {
             if ((bool)parent::getValue('is_test'))
@@ -116,7 +116,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
 	/**
 	 * @return string
 	 */
-	public function getVersionInformation()
+	function getVersionInformation()
 	{
 		$moduleVersion = $this->fullModuleList->getOne('SecureTrading_Trust');
 		$stppVersion   = isset($moduleVersion['setup_version']) ? $moduleVersion['setup_version'] : "";
@@ -132,7 +132,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
      * @param $params
      * @return string
      */
-    public function getSiteSecurity($params)
+    function getSiteSecurity($params)
 	{
 		$params['password'] = $this->getValue('site_password');
 //		$params['password'] = '';

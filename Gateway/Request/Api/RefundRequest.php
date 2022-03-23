@@ -15,7 +15,7 @@ class RefundRequest implements BuilderInterface
 
 	private $logger;
 
-	public function __construct(
+	function __construct(
 		ConfigInterface $config,
 		Logger $logger
 	) {
@@ -23,7 +23,7 @@ class RefundRequest implements BuilderInterface
 		$this->config = $config;
 	}
 
-	public function build(array $buildSubject)
+	function build(array $buildSubject)
 	{
 		if (!isset($buildSubject['payment'])
 			|| !$buildSubject['payment'] instanceof PaymentDataObjectInterface

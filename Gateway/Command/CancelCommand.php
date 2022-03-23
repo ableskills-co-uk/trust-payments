@@ -17,7 +17,7 @@ class CancelCommand extends AbstractCommand
      * @return \Magento\Payment\Gateway\Command\ResultInterface|void|null
      * @throws LocalizedException
      */
-    public function execute(array $commandSubject)
+    function execute(array $commandSubject)
     {
 		$data = $this->requestBuilder->build($commandSubject);
 		$paymentDO = $commandSubject['payment'];
@@ -50,7 +50,7 @@ class CancelCommand extends AbstractCommand
      * @param $data
      * @throws CommandException
      */
-    public function processCancelation(array $commandSubject, $data){
+    function processCancelation(array $commandSubject, $data){
 		// @TODO implement exceptions catching
 		//Send API to Update transaction
 		//$response is an object

@@ -19,7 +19,7 @@ class OrderResponseHandle implements HandlerInterface
 	 * @param array $response
 	 * @throws \Magento\Framework\Exception\LocalizedException
 	 */
-	public function handle(array $handlingSubject, array $response)
+	function handle(array $handlingSubject, array $response)
 	{
 		$paymentDO = SubjectReader::readPayment($handlingSubject);
 

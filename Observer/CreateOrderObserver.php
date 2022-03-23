@@ -20,7 +20,7 @@ class CreateOrderObserver implements ObserverInterface
      * CreateOrderObserver constructor.
      * @param \Magento\Framework\Registry $registry
      */
-    public function __construct(\Magento\Framework\Registry $registry)
+    function __construct(\Magento\Framework\Registry $registry)
     {
         $this->registry = $registry;
     }
@@ -28,7 +28,7 @@ class CreateOrderObserver implements ObserverInterface
     /**
      * @param Observer $observer
      */
-    public function execute(Observer $observer)
+    function execute(Observer $observer)
     {
         $order = $observer->getOrder();
         $this->registry->register('order_id',$order->getId());

@@ -38,7 +38,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
 	 * @param \Magento\Framework\Registry $coreRegistry
 	 * @param array $data
 	 */
-	public function __construct(
+	function __construct(
 		\Magento\Backend\Block\Template\Context $context,
 		\Magento\Backend\Helper\Data $backendHelper,
 		\SecureTrading\Trust\Model\ResourceModel\Subscription\CollectionFactory $collectionFactory,

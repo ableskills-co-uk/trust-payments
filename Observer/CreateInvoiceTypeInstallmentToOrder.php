@@ -8,11 +8,11 @@ use Magento\Framework\Event\ObserverInterface;
 class CreateInvoiceTypeInstallmentToOrder implements ObserverInterface
 {
 	protected $registry;
-	public function __construct(\Magento\Framework\Registry $registry)
+	function __construct(\Magento\Framework\Registry $registry)
 	{
 		$this->registry = $registry;
 	}
-	public function execute(Observer $observer)
+	function execute(Observer $observer)
 	{
 		$payment = $observer->getPayment();
 		$order = $payment->getOrder();

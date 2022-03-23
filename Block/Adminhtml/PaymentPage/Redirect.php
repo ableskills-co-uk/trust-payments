@@ -40,7 +40,7 @@ class Redirect extends Template
 	 * @param ConfigInterface $config
 	 * @param array $data
 	 */
-	public function __construct(
+	function __construct(
 		Template\Context $context,
 		\Magento\Sales\Model\OrderFactory $orderFactory,
 		\Magento\Framework\Serialize\Serializer\Json $jsonDecode,
@@ -58,7 +58,7 @@ class Redirect extends Template
 	/**
 	 * @return array
 	 */
-	public function getOrderData()
+	function getOrderData()
 	{
 		$id                  = $this->getRequest()->getParam('order_id');
 		$order               = $this->orderFactory->create()->load(intval($id));
@@ -76,7 +76,7 @@ class Redirect extends Template
 	 * @param array $keys
 	 * @return bool|false|string
 	 */
-	public function jsonDecode(array $keys = [])
+	function jsonDecode(array $keys = [])
 	{
 		return $this->jsonDecode->serialize($keys);
 	}
@@ -84,7 +84,7 @@ class Redirect extends Template
 	/**
 	 * @return mixed
 	 */
-	public function isUsedIframe()
+	function isUsedIframe()
 	{
 		return $this->config->getValue(Data::USE_IFRAME);
 	}
@@ -92,7 +92,7 @@ class Redirect extends Template
 	/**
 	 * @return mixed
 	 */
-	public function getWidth()
+	function getWidth()
 	{
 		return $this->config->getValue(DATA::IFRAME_WIDTH);
 	}
@@ -100,7 +100,7 @@ class Redirect extends Template
 	/**
 	 * @return mixed
 	 */
-	public function getHeight()
+	function getHeight()
 	{
 		return $this->config->getValue(DATA::IFRAME_HEIGHT);
 	}
@@ -108,7 +108,7 @@ class Redirect extends Template
 	/**
 	 * @return string
 	 */
-	public function gePaymentUrl()
+	function gePaymentUrl()
 	{
 		return $this->getUrl('securetrading/paymentpage/adminraw', ['order_id' => $this->getRequest()->getParam('order_id')]);
 	}
@@ -116,7 +116,7 @@ class Redirect extends Template
 	/**
 	 * @return bool
 	 */
-	public function isRedirectedToOrderGrid()
+	function isRedirectedToOrderGrid()
 	{
 
 		if (!empty($this->getRequest()->getParam('redirect_path'))) {

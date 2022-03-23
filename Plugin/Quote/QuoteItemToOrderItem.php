@@ -21,7 +21,7 @@ class QuoteItemToOrderItem
 	 *
 	 * @param Json $json
 	 */
-	public function __construct(Json $json)
+	function __construct(Json $json)
 	{
 		$this->serializer = $json;
 	}
@@ -33,7 +33,7 @@ class QuoteItemToOrderItem
 	 * @param $data
 	 * @return mixed
 	 */
-	public function afterConvert(\Magento\Quote\Model\Quote\Item\ToOrderItem $subject, $result, $quoteItem, $data = [])
+	function afterConvert(\Magento\Quote\Model\Quote\Item\ToOrderItem $subject, $result, $quoteItem, $data = [])
 	{
 		// get order item
 		$orderItem = $result;

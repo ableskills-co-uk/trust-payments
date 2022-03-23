@@ -11,7 +11,7 @@ class Start extends \Magento\Framework\App\Action\Action
 
 	protected $orderFactory;
 
-	public function __construct(
+	function __construct(
 		Context $context,
 		\Magento\Sales\Model\OrderFactory $orderFactory,
 		\Magento\Framework\Controller\Result\Json $json
@@ -21,7 +21,7 @@ class Start extends \Magento\Framework\App\Action\Action
 		$this->orderFactory = $orderFactory;
 	}
 
-	public function execute()
+	function execute()
 	{
 		$data = $this->getRequest()->getParams();
 		/** @var Order $order */

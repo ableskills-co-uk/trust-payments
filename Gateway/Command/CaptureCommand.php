@@ -17,7 +17,7 @@ class CaptureCommand extends AbstractCommand
 	 * @return \Magento\Payment\Gateway\Command\ResultInterface|void|null
 	 * @throws LocalizedException
 	 */
-	public function execute(array $commandSubject)
+	function execute(array $commandSubject)
 	{
 		$paymentPO = $commandSubject['payment'];
 		if(!empty($paymentPO))
@@ -56,7 +56,7 @@ class CaptureCommand extends AbstractCommand
 		}
 	}
 
-	public function processCapture($commandSubject)
+	function processCapture($commandSubject)
 	{
 		// @TODO implement exceptions catching
 		//Send API to Update transaction
@@ -82,7 +82,7 @@ class CaptureCommand extends AbstractCommand
 		}
 	}
 
-	public function validateFreeTransaction($payment){
+	function validateFreeTransaction($payment){
 		$skipthefirstpayment  = $payment->getAdditionalInformation('skipthefirstpayment');
 		$accounttypedescription = $payment->getAdditionalInformation('accounttypedescription');
 		if($skipthefirstpayment == 1 && $accounttypedescription == Data::RECUR_ACC_TYPE && $payment->getAdditionalInformation('subscriptiontype') == 'RECURRING'){

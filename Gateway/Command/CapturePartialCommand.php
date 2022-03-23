@@ -49,7 +49,7 @@ class CapturePartialCommand implements CommandInterface
 
 	protected $registry;
 
-	public function __construct(
+	function __construct(
 		CommandPoolInterface $commandPool,
 		Logger $logger,
 		\Magento\Framework\App\Action\Context $context,
@@ -72,7 +72,7 @@ class CapturePartialCommand implements CommandInterface
 	 * @return void|null
 	 * @throws LocalizedException
 	 */
-	public function execute(array $commandSubject)
+	function execute(array $commandSubject)
 	{
 		/** @var Order $order */
 		if (!empty($commandSubject['order'])) {
@@ -123,7 +123,7 @@ class CapturePartialCommand implements CommandInterface
 		}
 	}
 
-	public function createInstallmentInvoice(Order $order, $stData, $isFinal)
+	function createInstallmentInvoice(Order $order, $stData, $isFinal)
 	{
 		$state = Order::STATE_PROCESSING;
 		$baseAmountToCapture = (float)$stData['mainamount'];
@@ -162,7 +162,7 @@ class CapturePartialCommand implements CommandInterface
 	 * @throws \Magento\Framework\Exception\NotFoundException
 	 * @throws \Magento\Payment\Gateway\Command\CommandException
 	 */
-	public function authorizeCommand(Order $order, array $responseParams)
+	function authorizeCommand(Order $order, array $responseParams)
 	{
 		$this->commandPool->get('authorize')->execute(['order' => $order, 'info' => $responseParams]);
 	}
@@ -171,7 +171,7 @@ class CapturePartialCommand implements CommandInterface
 	 * @param $payment
 	 * @param $commandSubject
 	 */
-	public function setTransactionData($payment, $commandSubject)
+	function setTransactionData($payment, $commandSubject)
 	{
 		$payment->setTransactionId($commandSubject['info']['transactionreference']);
 		if (isset($commandSubject['info']['parenttransactionreference'])) {

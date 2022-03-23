@@ -14,7 +14,7 @@ class Raw extends Redirect
 	/**
 	 * @return mixed
 	 */
-	public function getRedirectUrl()
+	function getRedirectUrl()
 	{
 		if (!$this->config->getValue(Data::SKIP_CHOICE_PAGE)) {
 			return $this->config->getValue(Data::CHOICE_PAGE);

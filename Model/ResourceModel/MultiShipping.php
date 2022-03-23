@@ -12,7 +12,7 @@ class MultiShipping extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 	/**
 	 *
 	 */
-	public function _construct()
+	function _construct()
 	{
 		$this->_init('secure_trading_multishipping',
 			'set_id');

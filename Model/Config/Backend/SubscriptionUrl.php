@@ -28,7 +28,7 @@ class SubscriptionUrl extends \Magento\Framework\App\Config\Value
 	 * @param \Magento\Framework\Data\Collection\AbstractDb|null $resourceCollection
 	 * @param array $data
 	 */
-	public function __construct(StoreManagerInterface $storeManager,
+	function __construct(StoreManagerInterface $storeManager,
 								   \Magento\Framework\Model\Context $context,
 								   \Magento\Framework\Registry $registry,
 								   \Magento\Framework\App\Config\ScopeConfigInterface $config,
@@ -45,7 +45,7 @@ class SubscriptionUrl extends \Magento\Framework\App\Config\Value
 	 * @return \Magento\Framework\App\Config\Value|void
 	 * @throws \Magento\Framework\Exception\NoSuchEntityException
 	 */
-	public function afterLoad()
+	function afterLoad()
 	{
 		$this->setValue($this->storeManager->getStore()->getBaseUrl() . 'securetrading/subscription/notificationresponse');
 		parent::beforeSave();

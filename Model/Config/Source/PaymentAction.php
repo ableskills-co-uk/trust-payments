@@ -14,7 +14,7 @@ class PaymentAction implements \Magento\Framework\Option\ArrayInterface
      *
      * @return array
      */
-    public function toOptionArray()
+    function toOptionArray()
     {
         return [['value' => 'authorize', 'label' => 'Authorize Only'],
                 ['value' => 'authorize_capture', 'label' => 'Authorize & Capture']];

@@ -24,7 +24,7 @@ class OrderCommand implements CommandInterface
 	 * @param BuilderInterface $requestBuilder
 	 * @param HandlerInterface|null $handler
 	 */
-	public function __construct(
+	function __construct(
 		BuilderInterface $requestBuilder,
 		HandlerInterface $handler = null
 	) {
@@ -37,7 +37,7 @@ class OrderCommand implements CommandInterface
 	 * @param array $commandSubject
 	 * @return \Magento\Payment\Gateway\Command\ResultInterface|void|null
 	 */
-	public function execute(array $commandSubject)
+	function execute(array $commandSubject)
 	{
 		$response = $this->requestBuilder->build($commandSubject);
 		if ($this->handler) {

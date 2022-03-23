@@ -31,7 +31,7 @@ class UpgradeData implements UpgradeDataInterface
 	 * @param StatusFactory $statusFactory
 	 * @param State $state
 	 */
-	public function __construct(
+	function __construct(
 		StatusFactory $statusFactory,
 		State $state,
 		EavSetupFactory $eavSetupFactory
@@ -45,7 +45,7 @@ class UpgradeData implements UpgradeDataInterface
 	 * @param ModuleDataSetupInterface $setup
 	 * @param ModuleContextInterface $context
 	 */
-	public function upgrade(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
+	function upgrade(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
 	{
 		$setup->startSetup();
 

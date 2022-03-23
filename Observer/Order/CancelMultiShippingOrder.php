@@ -18,7 +18,7 @@ class CancelMultiShippingOrder extends AbstractOperationObserver implements Obse
 	 * @param Observer $observer
 	 * @throws LocalizedException
 	 */
-	public function execute(Observer $observer)
+	function execute(Observer $observer)
 	{
 		$flag = $this->coreRegistry->registry('cancel_multishipping');
 		if ($flag != true) {

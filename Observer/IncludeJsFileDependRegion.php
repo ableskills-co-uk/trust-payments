@@ -30,7 +30,7 @@ class IncludeJsFileDependRegion extends AbstractDataAssignObserver
 	 * @param StoreManagerInterface $storeManager
 	 * @param Session $customerSession
 	 */
-    public function __construct(StoreManagerInterface $storeManager, Session $customerSession)
+    function __construct(StoreManagerInterface $storeManager, Session $customerSession)
     {
         $this->storeManager = $storeManager;
         $this->customerSession = $customerSession;
@@ -41,7 +41,7 @@ class IncludeJsFileDependRegion extends AbstractDataAssignObserver
      * @return $this|void
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function execute(Observer $observer)
+    function execute(Observer $observer)
     {
         $checkLayout = $observer->getFullActionName();
         if ($checkLayout == "checkout_index_index"

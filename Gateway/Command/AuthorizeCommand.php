@@ -23,7 +23,7 @@ class AuthorizeCommand implements CommandInterface
      * AuthorizeAndCaptureCommand constructor.
      * @param Logger $logger
      */
-    public function __construct(
+    function __construct(
         Logger $logger
     ) {
         $this->logger = $logger;
@@ -33,7 +33,7 @@ class AuthorizeCommand implements CommandInterface
          * @return void|null
          * @throws LocalizedException
          */
-        public function execute(array $commandSubject)
+        function execute(array $commandSubject)
         {
                 /** @var Order $order */
                 if (!empty($commandSubject['order'])) {

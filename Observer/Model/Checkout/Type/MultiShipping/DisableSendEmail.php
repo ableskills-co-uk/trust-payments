@@ -18,7 +18,7 @@ class DisableSendEmail implements ObserverInterface
 	 * @param Observer $observer
 	 * @throws \Exception
 	 */
-	public function execute(Observer $observer)
+	function execute(Observer $observer)
 	{
 		$order = $observer->getEvent()->getOrder();
 		$order->setCanSendNewEmailFlag(false);

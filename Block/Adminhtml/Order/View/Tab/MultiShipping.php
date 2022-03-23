@@ -47,7 +47,7 @@ class MultiShipping extends \Magento\Backend\Block\Template implements \Magento\
 	 * @param \Magento\Framework\App\Config\ScopeConfigInterface $coreConfig
 	 * @param array $data
 	 */
-	public function __construct(
+	function __construct(
 		\Magento\Backend\Block\Template\Context $context,
 		\Magento\Framework\Registry $registry,
 		MultiShippingFactory $multiShippingFactory,
@@ -65,7 +65,7 @@ class MultiShipping extends \Magento\Backend\Block\Template implements \Magento\
 	/**
 	 * @return mixed
 	 */
-	public function getOrder()
+	function getOrder()
 	{
 		return $this->_coreRegistry->registry('current_order');
 	}
@@ -73,7 +73,7 @@ class MultiShipping extends \Magento\Backend\Block\Template implements \Magento\
 	/**
 	 * @return mixed
 	 */
-	public function getOrderId()
+	function getOrderId()
 	{
 		return $this->getOrder()->getEntityId();
 	}
@@ -81,7 +81,7 @@ class MultiShipping extends \Magento\Backend\Block\Template implements \Magento\
 	/**
 	 * @return mixed
 	 */
-	public function getOrderIncrementId()
+	function getOrderIncrementId()
 	{
 		return $this->getOrder()->getIncrementId();
 	}
@@ -89,7 +89,7 @@ class MultiShipping extends \Magento\Backend\Block\Template implements \Magento\
 	/**
 	 * @return \Magento\Framework\Phrase|string
 	 */
-	public function getTabLabel()
+	function getTabLabel()
 	{
 		return __('Multishipping Related Orders');
 	}
@@ -97,7 +97,7 @@ class MultiShipping extends \Magento\Backend\Block\Template implements \Magento\
 	/**
 	 * @return \Magento\Framework\Phrase|string
 	 */
-	public function getTabTitle()
+	function getTabTitle()
 	{
 		return __('Multishipping Related Orders');
 	}
@@ -105,7 +105,7 @@ class MultiShipping extends \Magento\Backend\Block\Template implements \Magento\
 	/**
 	 * @return bool
 	 */
-	public function canShowTab()
+	function canShowTab()
 	{
 		return true;
 	}
@@ -113,7 +113,7 @@ class MultiShipping extends \Magento\Backend\Block\Template implements \Magento\
 	/**
 	 * @return bool
 	 */
-	public function isHidden()
+	function isHidden()
 	{
 		if ($this->coreConfig->getValue('multishipping/options/checkout_multiple')) {
 			$setId = $this->getSetId();
@@ -127,7 +127,7 @@ class MultiShipping extends \Magento\Backend\Block\Template implements \Magento\
 	/**
 	 * @return array|bool|float|int|string|null
 	 */
-	public function getRelatedOrders()
+	function getRelatedOrders()
 	{
 		$setId         = $this->getSetId();
 		$multiShipping = $this->multiShippingFactory->create()->load($setId);
@@ -141,7 +141,7 @@ class MultiShipping extends \Magento\Backend\Block\Template implements \Magento\
 	/**
 	 * @return mixed
 	 */
-	public function getSetId()
+	function getSetId()
 	{
 		$payment = $this->getOrder()->getPayment();
 		$setId   = $payment->getAdditionalInformation('multishipping_set_id');
@@ -152,7 +152,7 @@ class MultiShipping extends \Magento\Backend\Block\Template implements \Magento\
 	 * @param $id
 	 * @return string
 	 */
-	public function buildUrl($id)
+	function buildUrl($id)
 	{
 		return $this->escapeHtml($this->getUrl('sales/order/view', ['order_id' => $id]));
 	}

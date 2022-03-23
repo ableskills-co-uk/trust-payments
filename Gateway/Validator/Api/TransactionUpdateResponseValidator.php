@@ -16,7 +16,7 @@ class TransactionUpdateResponseValidator extends AbstractResponseValidator
 	 * @param array $validationSubject
 	 * @return ResultInterface
 	 */
-	public function validate(array $validationSubject)
+	function validate(array $validationSubject)
 	{
 		if (empty($validationSubject['response'])) {
 			throw new \InvalidArgumentException('Response does not exist');
@@ -41,7 +41,7 @@ class TransactionUpdateResponseValidator extends AbstractResponseValidator
 	 * @param $response
 	 * @return bool
 	 */
-	public function getErrorCode($response){
+	function getErrorCode($response){
 		$this->logger->debug('--- Error Code: '.$response['errorcode'].' ---');
 		if(isset($response['errorcode'])){
 			if($response['errorcode'] == 0){
@@ -56,7 +56,7 @@ class TransactionUpdateResponseValidator extends AbstractResponseValidator
 	 * @param $response
 	 * @return string
 	 */
-	public function getErrorMessage($response){
+	function getErrorMessage($response){
 		$this->logger->debug('--- Error Message: '.$response['errormessage'].' ---');
 		if(!empty($response['errormessage'])) {
 			return $response['errormessage'];

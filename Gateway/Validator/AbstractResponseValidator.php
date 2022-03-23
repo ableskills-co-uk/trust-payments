@@ -24,7 +24,7 @@ abstract class AbstractResponseValidator extends AbstractValidator
 	 * @param ResultInterfaceFactory $resultFactory
 	 * @param Logger $logger
 	 */
-	public function __construct(
+	function __construct(
 		ResultInterfaceFactory $resultFactory,
 		Logger $logger
 	) {

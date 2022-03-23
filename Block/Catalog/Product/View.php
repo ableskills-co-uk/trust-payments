@@ -66,7 +66,7 @@ class View extends Template
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param array $data
      */
-    public function __construct(
+    function __construct(
 	    ScopeConfigInterface $scopeConfig,
 	    ConfigInterface $config,
         RequestInterface $requestInterface,
@@ -90,7 +90,7 @@ class View extends Template
 	/**
 	 * @return mixed
 	 */
-	public function isActive()
+	function isActive()
 	{
         return $this->scopeConfig->isSetFlag('payment/secure_trading/active', ScopeInterface::SCOPE_STORE) || $this->scopeConfig->isSetFlag('payment/api_secure_trading/active', ScopeInterface::SCOPE_STORE);
 	}
@@ -98,7 +98,7 @@ class View extends Template
 	/**
 	 * @return \Magento\Catalog\Model\Product|null
 	 */
-	public function getProduct()
+	function getProduct()
 	{
 		$productId = $this->request->getParam('id');
 		$product   = $this->productFactory->create()->load($productId);
@@ -112,7 +112,7 @@ class View extends Template
 	 * @param string $data
 	 * @return array|bool|float|int|mixed|string|null
 	 */
-	public function decodeOptions(string $data)
+	function decodeOptions(string $data)
 	{
 		if ($data == '') return false;
 		return $this->json->unserialize($data);
@@ -122,7 +122,7 @@ class View extends Template
 	 * @param array $data
 	 * @return bool|false|string
 	 */
-	public function encodeOptions(array $data)
+	function encodeOptions(array $data)
 	{
 		if (!is_array($data)) return false;
 		return $this->json->serialize($data);
@@ -137,7 +137,7 @@ class View extends Template
 	 * @param $style
 	 * @return string
 	 */
-	public function getDescription(int $skipTheFirstPayment, int $frequency, $unit, int $finalNumber, $priceProduct, $style){
+	function getDescription(int $skipTheFirstPayment, int $frequency, $unit, int $finalNumber, $priceProduct, $style){
 		return $this->helper->getDescription($skipTheFirstPayment, $frequency, $unit, $finalNumber, $priceProduct, $style);
 	}
 }

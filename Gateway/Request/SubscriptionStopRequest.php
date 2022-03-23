@@ -17,7 +17,7 @@ class SubscriptionStopRequest extends CancelRequest
 	 * @return array
 	 * @throws \Magento\Framework\Exception\NoSuchEntityException
 	 */
-	public function build(array $buildSubject)
+	function build(array $buildSubject)
 	{
 		if (!isset($buildSubject['payment'])
 			|| !$buildSubject['payment'] instanceof PaymentDataObjectInterface

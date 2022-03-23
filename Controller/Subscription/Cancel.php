@@ -59,7 +59,7 @@ class Cancel extends \Magento\Framework\App\Action\Action
 	 * @param \Magento\Framework\App\Action\Context $context
 	 * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
 	 */
-	public function __construct(
+	function __construct(
 		OrderFactory $orderFactory,
 		PaymentDataObjectFactoryInterface $paymentDataObjectFactory,
 		ConfigInterface $config,
@@ -82,7 +82,7 @@ class Cancel extends \Magento\Framework\App\Action\Action
 	/**
 	 * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
 	 */
-	public function execute()
+	function execute()
 	{
 		try {
 			$data = $this->_request->getParams();

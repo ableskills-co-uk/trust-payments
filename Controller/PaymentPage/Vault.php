@@ -41,7 +41,7 @@ class Vault extends \Magento\Framework\App\Action\Action
      * @param \Magento\Sales\Model\OrderFactory $orderFactory
      * @param \Magento\Framework\Controller\Result\Json $json
      */
-    public function __construct(
+    function __construct(
         Context $context,
         \Magento\Sales\Model\OrderFactory $orderFactory,
         \Magento\Framework\Controller\Result\Json $json,
@@ -58,7 +58,7 @@ class Vault extends \Magento\Framework\App\Action\Action
     /**
      * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Json|\Magento\Framework\Controller\ResultInterface
      */
-    public function execute()
+    function execute()
     {
         try
         {
@@ -125,7 +125,7 @@ class Vault extends \Magento\Framework\App\Action\Action
         }
     }
 
-    public function processSubscriptionJWT(array $data)
+    function processSubscriptionJWT(array $data)
 	{
 		if(!empty($data['issubscription']))
 		{

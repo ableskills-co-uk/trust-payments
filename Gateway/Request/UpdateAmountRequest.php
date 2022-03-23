@@ -53,7 +53,7 @@ class UpdateAmountRequest implements BuilderInterface
 	 * @param SerializerInterface $serializer
 	 * @param CollectionFactory $collectionFactory
 	 */
-	public function __construct(
+	function __construct(
 		ConfigInterface $config,
 		Logger $logger,
 		MultiShippingFactory $multiShippingFactory,
@@ -72,7 +72,7 @@ class UpdateAmountRequest implements BuilderInterface
 	 * @return array
 	 * @throws \Magento\Framework\Exception\NoSuchEntityException
 	 */
-	public function build(array $buildSubject)
+	function build(array $buildSubject)
 	{
 		if (!isset($buildSubject['payment'])
 			|| !$buildSubject['payment'] instanceof PaymentDataObjectInterface
@@ -117,7 +117,7 @@ class UpdateAmountRequest implements BuilderInterface
 	 * @param $payment
 	 * @return mixed
 	 */
-	public function getAmountAfterUpdate($payment)
+	function getAmountAfterUpdate($payment)
 	{
 		if($payment['method'] == 'api_secure_trading' && isset($payment->getAdditionalInformation()['multishipping_data'])){
 			$mainAmount = $payment->getAdditionalInformation()['multishipping_data']['mainamount'];

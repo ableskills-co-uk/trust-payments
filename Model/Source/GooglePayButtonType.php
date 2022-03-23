@@ -6,7 +6,7 @@ namespace SecureTrading\Trust\Model\Source;
 
 class GooglePayButtonType implements \Magento\Framework\Option\ArrayInterface
 {
-    public function toOptionArray()
+    function toOptionArray()
     {
         return [
             [

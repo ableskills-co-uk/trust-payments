@@ -47,7 +47,7 @@ class SaveCardInfo extends \Magento\Framework\App\Action\Action
      * @param EncryptorInterface $enc
      * @param JWT $jwt
      */
-    public function __construct(
+    function __construct(
         \Magento\Sales\Model\OrderRepository $orderRepository,
         \Magento\Framework\Controller\Result\JsonFactory $jsonResult,
         \Magento\Framework\App\Action\Context $context,
@@ -70,7 +70,7 @@ class SaveCardInfo extends \Magento\Framework\App\Action\Action
      * @throws \Magento\Framework\Exception\LocalizedException
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function execute()
+    function execute()
     {
         $isSave =  $this->_request->getParam('is_save');
         $orderId = $this->_request->getParam('order_id');
@@ -98,7 +98,7 @@ class SaveCardInfo extends \Magento\Framework\App\Action\Action
      * @param $isSave
      * @return string
      */
-    public function handleJwt($payment, $secretkey, $isSave){
+    function handleJwt($payment, $secretkey, $isSave){
         $jwt = $payment->getAdditionalInformation('jwt');
         # 2022-03-18 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
         $jwtDecode = (array)$this->jwt->decode($jwt, new \Firebase\JWT\Key($secretkey, 'HS256'));

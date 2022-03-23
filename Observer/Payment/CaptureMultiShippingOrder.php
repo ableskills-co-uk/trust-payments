@@ -17,7 +17,7 @@ class CaptureMultiShippingOrder extends AbstractOperationObserver implements Obs
 	 * @param Observer $observer
 	 * @throws LocalizedException
 	 */
-	public function execute(Observer $observer)
+	function execute(Observer $observer)
 	{
 		$flag = $this->coreRegistry->registry('capture_multishipping');
 		if ($flag != true) {

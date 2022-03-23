@@ -15,7 +15,7 @@ class SettleDueDay implements \Magento\Framework\Option\ArrayInterface
      *
      * @return array
      */
-    public function toOptionArray()
+    function toOptionArray()
     {
         $result = [];
         if(!empty($this->toArray())){
@@ -32,7 +32,7 @@ class SettleDueDay implements \Magento\Framework\Option\ArrayInterface
      *
      * @return array
      */
-    public function toArray()
+    function toArray()
     {
         return array(
             0 => 'Process immediately',

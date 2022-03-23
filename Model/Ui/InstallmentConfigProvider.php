@@ -36,7 +36,7 @@ class InstallmentConfigProvider implements ConfigProviderInterface
 	 * @param QuoteItemRepository $quoteItemRepository
 	 * @param SerializerInterface $serializer
 	 */
-	public function __construct(CheckoutSession $checkoutSession,
+	function __construct(CheckoutSession $checkoutSession,
 								QuoteItemRepository $quoteItemRepository,
 								SerializerInterface $serializer)
 	{
@@ -50,7 +50,7 @@ class InstallmentConfigProvider implements ConfigProviderInterface
 	 * @throws \Magento\Framework\Exception\LocalizedException
 	 * @throws \Magento\Framework\Exception\NoSuchEntityException
 	 */
-	public function getConfig()
+	function getConfig()
 	{
 		$data    = [];
 		$quoteId = $this->checkoutSession->getQuote()->getId();

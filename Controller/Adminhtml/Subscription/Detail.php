@@ -31,7 +31,7 @@ class Detail extends Action
 	 * @param Context $context
 	 * @param PageFactory $resultPageFactory
 	 */
-	public function __construct(
+	function __construct(
         Registry $registry,
         Context $context,
         PageFactory $resultPageFactory
@@ -44,7 +44,7 @@ class Detail extends Action
     /**
      * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
      */
-    public function execute()
+    function execute()
     {
         $resultPage = $this->resultPageFactory->create();
         $poid       = $this->getRequest()->getParam('poid');

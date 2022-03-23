@@ -16,7 +16,7 @@ class DetailRequest implements BuilderInterface
 
 	private $logger;
 
-	public function __construct(
+	function __construct(
 		ConfigInterface $config,
 		Logger $logger
 	) {
@@ -24,7 +24,7 @@ class DetailRequest implements BuilderInterface
 		$this->config = $config;
 	}
 
-	public function build(array $buildSubject)
+	function build(array $buildSubject)
 	{
 		$payment = $buildSubject['payment'];
 

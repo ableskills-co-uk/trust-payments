@@ -14,7 +14,7 @@ class TransactionUpdateTransferFactory implements TransferFactoryInterface
      * @param array $request
      * @return \Magento\Payment\Gateway\Http\TransferInterface
      */
-    public function create(array $request)
+    function create(array $request)
     {
         $api = \Securetrading\api($request['configData']);
         return  $api->process($request['requestData']);

@@ -8,7 +8,7 @@ use Magento\Sales\Model\Order\Payment;
 
 class RefundResponseHandle implements HandlerInterface
 {
-	public function handle(array $handlingSubject, array $response)
+	function handle(array $handlingSubject, array $response)
 	{
 		$paymentDO = SubjectReader::readPayment($handlingSubject);
 

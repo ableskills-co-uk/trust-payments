@@ -40,14 +40,14 @@ class CardUrl extends Response
 
 	protected $messageManager;
 
-	public function __construct(Context $context, ConfigInterface $config, \Magento\Sales\Model\OrderFactory $orderFactory, Session $checkoutSession, CommandPoolInterface $commandPool, PaymentTokenFactoryInterface $paymentTokenFactory, OrderPaymentExtensionInterfaceFactory $extensionInterfaceFactory, Logger $logger, JWT $jwt, Json $json, SubscriptionFactory $subscriptionFactory, SubscriptionHelper $subscriptionHelper, MultiShippingFactory $multiShippingFactory, SerializerInterface $serializer, OrderSender $orderSender, ScopeConfigInterface $scopeConfig, ManagerInterface $messageManager)
+	function __construct(Context $context, ConfigInterface $config, \Magento\Sales\Model\OrderFactory $orderFactory, Session $checkoutSession, CommandPoolInterface $commandPool, PaymentTokenFactoryInterface $paymentTokenFactory, OrderPaymentExtensionInterfaceFactory $extensionInterfaceFactory, Logger $logger, JWT $jwt, Json $json, SubscriptionFactory $subscriptionFactory, SubscriptionHelper $subscriptionHelper, MultiShippingFactory $multiShippingFactory, SerializerInterface $serializer, OrderSender $orderSender, ScopeConfigInterface $scopeConfig, ManagerInterface $messageManager)
 	{
 		parent::__construct($context, $config, $orderFactory, $checkoutSession, $commandPool, $paymentTokenFactory, $extensionInterfaceFactory, $logger, $jwt, $json, $subscriptionFactory, $subscriptionHelper, $multiShippingFactory, $serializer, $orderSender);
 		$this->scopeConfig = $scopeConfig;
 		$this->messageManager = $messageManager;
 	}
 
-	public function execute()
+	function execute()
 	{
 		$this->logger->debug('--- Notification Response API Secure Trading---');
 		try {
@@ -144,7 +144,7 @@ class CardUrl extends Response
 		}
 	}
 
-	public function decodeJWT($jwtResponse)
+	function decodeJWT($jwtResponse)
 	{
         # 2022-03-18 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
 		$responseData = $this->jwt->decode($jwtResponse['jwt'],

@@ -49,7 +49,7 @@ class Save implements ObserverInterface
 	 * @param \Magento\Framework\Message\ManagerInterface $messageManager
 	 * @param \Magento\Framework\Serialize\Serializer\Json $json
 	 */
-	public function __construct(RequestInterface $requestInterface,
+	function __construct(RequestInterface $requestInterface,
 								   StoreManagerInterface $storeManagerInterface,
 								   ProductRepositoryInterface $productRepository,
 								   \Magento\Framework\Message\ManagerInterface $messageManager,
@@ -67,7 +67,7 @@ class Save implements ObserverInterface
 	/**
 	 * @param \Magento\Framework\Event\Observer $observer
 	 */
-	public function execute(\Magento\Framework\Event\Observer $observer)
+	function execute(\Magento\Framework\Event\Observer $observer)
 	{
 		$params = $this->request->getParams();
 		$product = $observer->getProduct();

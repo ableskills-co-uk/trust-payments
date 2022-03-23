@@ -80,7 +80,7 @@ abstract class AbstractCommand implements CommandInterface
      * @param ConfigInterface $config
      * @param CommandPoolInterface $commandPool
      */
-    public function __construct(
+    function __construct(
 		Registry $coreRegistry,
         BuilderInterface $requestBuilder,
         TransferFactoryInterface $transferFactory,

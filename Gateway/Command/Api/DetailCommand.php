@@ -29,7 +29,7 @@ class DetailCommand extends AbstractCommand
 
     protected $errorMessageMapper;
 
-    public function __construct(
+    function __construct(
         BuilderInterface $requestBuilder,
         HandlerInterface $handler,
         TransferFactoryInterface $transferFactory,
@@ -47,7 +47,7 @@ class DetailCommand extends AbstractCommand
     }
 
 
-    public function execute(array $commandSubject)
+    function execute(array $commandSubject)
     {
         $data = $this->requestBuilder->build($commandSubject);
         $response = $this->transferFactory->create($data);

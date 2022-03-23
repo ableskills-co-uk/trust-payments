@@ -19,7 +19,7 @@ class Save
 
     protected $_messageManager;
 
-    public function __construct(\Magento\Framework\App\RequestInterface $request,
+    function __construct(\Magento\Framework\App\RequestInterface $request,
                                 \Magento\Framework\Registry $registry,
                                 ManagerInterface $messageManager)
     {
@@ -33,7 +33,7 @@ class Save
      * @param $result
      * @return \Magento\Framework\Controller\Result\Redirect
      */
-    public function afterExecute(\Magento\Sales\Controller\Adminhtml\Order\Create\Save $subject, $result){
+    function afterExecute(\Magento\Sales\Controller\Adminhtml\Order\Create\Save $subject, $result){
         $tempPaymentData = $this->getRequest()->getParam('payment');
 
         $orderId = $this->_registry->registry('order_id');
@@ -56,7 +56,7 @@ class Save
     /**
      * @return \Magento\Framework\App\RequestInterface
      */
-    public function getRequest()
+    function getRequest()
     {
         return $this->_request;
     }

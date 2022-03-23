@@ -33,7 +33,7 @@ class MultiShippingResponseHandle implements HandlerInterface
 
 	protected $orderFactory;
 
-	public function __construct(
+	function __construct(
 		PaymentTokenFactoryInterface $paymentTokenFactory,
 		Json $json,
 		SubscriptionHelper $subscriptionHelper,
@@ -53,7 +53,7 @@ class MultiShippingResponseHandle implements HandlerInterface
 	 * @param array $response
 	 * @throws LocalizedException
 	 */
-	public function handle(array $handlingSubject, array $response)
+	function handle(array $handlingSubject, array $response)
 	{
 		$paymentDO = $handlingSubject;
 		$multiShippingId = $paymentDO['data']['multishippingsetid'];

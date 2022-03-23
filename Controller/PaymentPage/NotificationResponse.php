@@ -12,7 +12,7 @@ class NotificationResponse extends Response
 	/**
 	 * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
 	 */
-	public function execute()
+	function execute()
 	{
 		$this->logger->debug('--- Notification Response ---');
 		try {

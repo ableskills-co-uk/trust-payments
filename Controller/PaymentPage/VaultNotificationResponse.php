@@ -13,7 +13,7 @@ class VaultNotificationResponse extends Response
     /**
      * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
      */
-    public function execute()
+    function execute()
     {
         $this->logger->debug('--- Vault Notification Response ---');
         try {
@@ -73,7 +73,7 @@ class VaultNotificationResponse extends Response
         return $this->resultRedirectFactory->create()->setPath('checkout/onepage/failure');
     }
 
-    public function decodeJWT($jwtResponse)
+    function decodeJWT($jwtResponse)
     {
         # 2022-03-18 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
         $responseData = $this->jwt->decode(
@@ -83,7 +83,7 @@ class VaultNotificationResponse extends Response
         return $responseData;
     }
 
-    public function vaultInvalid($response)
+    function vaultInvalid($response)
     {
         if (!isset($response['errorcode']) || $response['errorcode'] != 0)
             return false;

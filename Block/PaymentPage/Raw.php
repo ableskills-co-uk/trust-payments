@@ -14,7 +14,7 @@ class Raw extends Iframe
 	/**
 	 * @return mixed
 	 */
-	public function getRedirectUrl()
+	function getRedirectUrl()
 	{
 		if (!$this->config->getValue(Data::SKIP_CHOICE_PAGE)) {
 			return $this->config->getValue(Data::CHOICE_PAGE);
@@ -25,7 +25,7 @@ class Raw extends Iframe
 	/**
 	 * @return array
 	 */
-	public function getRedirectData()
+	function getRedirectData()
 	{
 		$orderId       = $this->getRequest()->getParam('orderId', null);
 		$multiShipping = $this->getRequest()->getParam('multishipping', null);

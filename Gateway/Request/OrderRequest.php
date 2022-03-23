@@ -68,7 +68,7 @@ class OrderRequest implements BuilderInterface
 	 * @param Logger $logger
 	 * @param \Magento\Framework\App\State $state
 	 */
-	public function __construct(
+	function __construct(
 		PriceCurrencyInterface $priceCurrency,
 		TimezoneInterface $timezone,
 		ConfigInterface $config,
@@ -91,7 +91,7 @@ class OrderRequest implements BuilderInterface
 	 * @return array
 	 * @throws \Magento\Framework\Exception\NoSuchEntityException
 	 */
-	public function build(array $buildSubject)
+	function build(array $buildSubject)
 	{
 		if (!isset($buildSubject['payment'])
 			|| !$buildSubject['payment'] instanceof PaymentDataObjectInterface

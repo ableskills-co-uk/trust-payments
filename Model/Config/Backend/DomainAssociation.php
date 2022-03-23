@@ -35,7 +35,7 @@ class DomainAssociation extends File
      * @param \Magento\Framework\Data\Collection\AbstractDb|null $resourceCollection
      * @param array $data
      */
-    public function __construct(
+    function __construct(
         \Magento\Framework\Filesystem\DirectoryList $directoryList,
         \Magento\Framework\Model\Context $context,
         \Magento\Framework\Registry $registry,
@@ -56,7 +56,7 @@ class DomainAssociation extends File
      * @return $this|\SecureTrading\Trust\Model\Config\Backend\DomainAssociation
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function beforeSave()
+    function beforeSave()
     {
         $value = $this->getValue();
         $file = $this->getFileData();

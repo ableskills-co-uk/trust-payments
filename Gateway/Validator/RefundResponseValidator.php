@@ -17,7 +17,7 @@ class RefundResponseValidator extends AbstractResponseValidator
      * @param array $validationSubject
      * @return ResultInterface
      */
-    public function validate(array $validationSubject)
+    function validate(array $validationSubject)
     {
         if (empty($validationSubject['response'])) {
             throw new \InvalidArgumentException('Response does not exist');
@@ -42,7 +42,7 @@ class RefundResponseValidator extends AbstractResponseValidator
 	 * @param $response
 	 * @return bool
 	 */
-	public function getErrorCode($response){
+	function getErrorCode($response){
         $this->logger->debug('--- Error Code: '.$response['responses'][0]['errorcode'].' ---');
         if(isset($response['responses'][0]['errorcode'])){
             if($response['responses'][0]['errorcode'] == 0){
@@ -57,7 +57,7 @@ class RefundResponseValidator extends AbstractResponseValidator
 	 * @param $response
 	 * @return string
 	 */
-	public function getErrorMessage($response){
+	function getErrorMessage($response){
         $this->logger->debug('--- Error Message: '.$response['responses'][0]['errormessage'].' ---');
         if(!empty($response['responses'][0]['errormessage'])) {
             return $response['responses'][0]['errormessage'];

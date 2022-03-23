@@ -17,7 +17,7 @@ class CardRenderer extends AbstractCardRenderer
      * @param PaymentTokenInterface $token
      * @return boolean
      */
-    public function canRender(PaymentTokenInterface $token)
+    function canRender(PaymentTokenInterface $token)
     {
         return ($token->getPaymentMethodCode() === ConfigProvider::CODE || $token->getPaymentMethodCode() === ConfigProvider::API_CODE);
     }
@@ -25,7 +25,7 @@ class CardRenderer extends AbstractCardRenderer
     /**
      * @return string
      */
-    public function getNumberLast4Digits()
+    function getNumberLast4Digits()
     {
         return $this->getTokenDetails()['maskedpan'];
     }
@@ -33,7 +33,7 @@ class CardRenderer extends AbstractCardRenderer
     /**
      * @return string
      */
-    public function getExpDate()
+    function getExpDate()
     {
     	$token = $this->getToken();
     	if($token->getPaymentMethodCode() === ConfigProvider::API_CODE){
@@ -45,7 +45,7 @@ class CardRenderer extends AbstractCardRenderer
     /**
      * @return string
      */
-    public function getIconUrl()
+    function getIconUrl()
     {
         return $this->getIconForType($this->getTokenDetails()['paymentType'])['url'];
     }
@@ -53,7 +53,7 @@ class CardRenderer extends AbstractCardRenderer
     /**
      * @return int
      */
-    public function getIconHeight()
+    function getIconHeight()
     {
         return $this->getIconForType($this->getTokenDetails()['paymentType'])['height'];
     }
@@ -61,7 +61,7 @@ class CardRenderer extends AbstractCardRenderer
     /**
      * @return int
      */
-    public function getIconWidth()
+    function getIconWidth()
     {
         return $this->getIconForType($this->getTokenDetails()['paymentType'])['width'];
     }

@@ -7,7 +7,7 @@ use Magento\Sales\Model\Order;
 
 class NotificationResponse extends \SecureTrading\Trust\Controller\PaymentPage\NotificationResponse
 {
-    public function execute()
+    function execute()
     {
         $this->logger->debug('--- Notification Response ---');
 //        try {

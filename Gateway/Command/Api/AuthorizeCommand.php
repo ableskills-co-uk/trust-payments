@@ -29,7 +29,7 @@ class AuthorizeCommand implements CommandInterface
 
 	protected $serializer;
 
-	public function __construct(
+	function __construct(
 		BuilderInterface $requestBuilder,
 		HandlerInterface $handler,
 		TransferFactoryInterface $transferFactory,
@@ -48,7 +48,7 @@ class AuthorizeCommand implements CommandInterface
 	}
 
 
-	public function execute(array $commandSubject)
+	function execute(array $commandSubject)
 	{
 		$checkMultiship = !empty($commandSubject['payment']->getPayment()->getOrder()->getQuote()) ? $commandSubject['payment']->getPayment()->getOrder()->getQuote()->getData('is_multi_shipping') : 0;
 		if(!$checkMultiship){

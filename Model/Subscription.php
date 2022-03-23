@@ -12,7 +12,7 @@ class Subscription extends \Magento\Framework\Model\AbstractModel
 	/**
 	 *
 	 */
-	public function _construct()
+	function _construct()
 	{
 		$this->_init
 		('SecureTrading\Trust\Model\ResourceModel\Subscription');
@@ -23,7 +23,7 @@ class Subscription extends \Magento\Framework\Model\AbstractModel
 	 * @return $this
 	 * @throws \Magento\Framework\Exception\LocalizedException
 	 */
-	public function loadByTransactionId(string $transactionId)
+	function loadByTransactionId(string $transactionId)
 	{
 		$this->_getResource()->load($this, $transactionId, 'transaction_id');
 		return $this;

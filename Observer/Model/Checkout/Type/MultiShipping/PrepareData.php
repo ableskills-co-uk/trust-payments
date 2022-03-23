@@ -24,7 +24,7 @@ class PrepareData implements ObserverInterface
 	 *
 	 * @param MultiShippingHelper $helper
 	 */
-	public function __construct(MultiShippingHelper $helper)
+	function __construct(MultiShippingHelper $helper)
 	{
 		$this->helper = $helper;
 	}
@@ -33,7 +33,7 @@ class PrepareData implements ObserverInterface
 	 * @param Observer $observer
 	 * @throws \Exception
 	 */
-	public function execute(Observer $observer)
+	function execute(Observer $observer)
 	{
 		$orders = $observer->getEvent()->getOrders();
 		$allOrders = $orders;

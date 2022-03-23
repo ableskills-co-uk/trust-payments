@@ -21,7 +21,7 @@ class AdminRedirect extends Action
 	 * @param Action\Context $context
 	 * @param PageFactory $resultPageFactory
 	 */
-	public function __construct(
+	function __construct(
 		Action\Context $context,
 		PageFactory $resultPageFactory
 	){
@@ -32,7 +32,7 @@ class AdminRedirect extends Action
 	/**
 	 * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
 	 */
-	public function execute()
+	function execute()
 	{
 		$resultPage = $this->resultPageFactory->create();
 		return $resultPage;

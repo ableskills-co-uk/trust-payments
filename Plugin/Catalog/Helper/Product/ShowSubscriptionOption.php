@@ -22,7 +22,7 @@ class ShowSubscriptionOption
 	 *
 	 * @param Json $json
 	 */
-	public function __construct(Json $json) {
+	function __construct(Json $json) {
 		$this->serializer = $json;
 	}
 
@@ -32,7 +32,7 @@ class ShowSubscriptionOption
 	 * @param \Magento\Catalog\Model\Product\Configuration\Item\ItemInterface $item
 	 * @return array
 	 */
-	public function afterGetCustomOptions(
+	function afterGetCustomOptions(
 		Configuration $subject,
 		$result,
 		\Magento\Catalog\Model\Product\Configuration\Item\ItemInterface $item)

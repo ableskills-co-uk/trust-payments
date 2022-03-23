@@ -38,7 +38,7 @@ class RefundCommand extends AbstractCommand
      * @param ConfigInterface $config
      * @param CommandPoolInterface $commandPool
      */
-    public function __construct(
+    function __construct(
     	Registry $coreRegistry,
         BuilderInterface $requestBuilder,
         TransferFactoryInterface $transferFactory,
@@ -59,7 +59,7 @@ class RefundCommand extends AbstractCommand
      * @throws CommandException
      * @throws \Magento\Framework\Exception\NotFoundException
      */
-    public function execute(array $commandSubject)
+    function execute(array $commandSubject)
     {
         $data =  $this->requestBuilder->build($commandSubject);
 

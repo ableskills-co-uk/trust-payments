@@ -36,7 +36,7 @@ class CaptureResponseHandle implements HandlerInterface
 	 * @param Json $json
 	 * @param SubscriptionHelper $subscriptionHelper
 	 */
-	public function __construct(
+	function __construct(
 		PaymentTokenFactoryInterface $paymentTokenFactory,
 		Json $json,
 		SubscriptionHelper $subscriptionHelper
@@ -52,7 +52,7 @@ class CaptureResponseHandle implements HandlerInterface
 	 * @param array $response
 	 * @throws \Magento\Framework\Exception\LocalizedException
 	 */
-	public function handle(array $handlingSubject, array $response)
+	function handle(array $handlingSubject, array $response)
 	{
 //		$paymentDO = SubjectReader::readPayment($handlingSubject);
 //

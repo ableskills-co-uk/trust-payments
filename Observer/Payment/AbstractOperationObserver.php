@@ -49,7 +49,7 @@ abstract class AbstractOperationObserver
 	 * @param Registry $coreRegistry
 	 * @param Logger $logger
 	 */
-	public function __construct(MultiShippingFactory $multiShippingFactory,
+	function __construct(MultiShippingFactory $multiShippingFactory,
 								CollectionFactory $collectionFactory,
 								SerializerInterface $serializer,
 								Registry $coreRegistry,

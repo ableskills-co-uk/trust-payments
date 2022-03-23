@@ -49,7 +49,7 @@ class Subscription extends Column
 	 * @param array $components
 	 * @param array $data
 	 */
-	public function __construct(ContextInterface $context, UiComponentFactory $uiComponentFactory, OrderRepositoryInterface $orderRepository, SearchCriteriaBuilder $criteria, SubsCollectionFactory $collectionFactory, UrlInterface $urlBuilder, array $components = [], array $data = [])
+	function __construct(ContextInterface $context, UiComponentFactory $uiComponentFactory, OrderRepositoryInterface $orderRepository, SearchCriteriaBuilder $criteria, SubsCollectionFactory $collectionFactory, UrlInterface $urlBuilder, array $components = [], array $data = [])
     {
         $this->_orderRepository = $orderRepository;
         $this->_searchCriteria = $criteria;
@@ -62,7 +62,7 @@ class Subscription extends Column
 	 * @param array $dataSource
 	 * @return array
 	 */
-	public function prepareDataSource(array $dataSource)
+	function prepareDataSource(array $dataSource)
     {
         if (isset($dataSource['data']['items'])) {
             foreach ($dataSource['data']['items'] as & $item) {

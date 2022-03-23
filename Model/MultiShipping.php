@@ -12,7 +12,7 @@ class MultiShipping extends \Magento\Framework\Model\AbstractModel
 	/**
 	 *
 	 */
-	public function _construct()
+	function _construct()
 	{
 		$this->_init
 		('SecureTrading\Trust\Model\ResourceModel\MultiShipping');

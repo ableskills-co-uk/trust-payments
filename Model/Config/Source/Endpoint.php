@@ -14,7 +14,7 @@ class Endpoint implements \Magento\Framework\Option\ArrayInterface
 	 *
 	 * @return array
 	 */
-	public function toOptionArray()
+	function toOptionArray()
 	{
 		return [['value' => 'https://payments.securetrading.net/', 'label' => 'EU'],
 				['value' => 'https://payments.securetrading.us/', 'label' => 'US']];

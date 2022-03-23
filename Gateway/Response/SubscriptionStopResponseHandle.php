@@ -16,7 +16,7 @@ class SubscriptionStopResponseHandle implements HandlerInterface
      * @param array $response
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function handle(array $handlingSubject, array $response)
+    function handle(array $handlingSubject, array $response)
     {
         $subscription = $handlingSubject['subscription'];
 		$subscription->setStatus(2);

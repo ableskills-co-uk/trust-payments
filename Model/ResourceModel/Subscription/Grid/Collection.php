@@ -32,7 +32,7 @@ class Collection extends \Magento\Framework\View\Element\UiComponent\DataProvide
 	 * @param string $resourceModel
 	 * @throws \Magento\Framework\Exception\LocalizedException
 	 */
-	public function __construct(
+	function __construct(
 		Registry $registry,
 		EntityFactory $entityFactory,
 		Logger $logger,
@@ -48,7 +48,7 @@ class Collection extends \Magento\Framework\View\Element\UiComponent\DataProvide
 	/**
 	 * @return $this|\Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult|void
 	 */
-	public function _initSelect()
+	function _initSelect()
 	{
 		parent::_initSelect();
 		$this->addFieldToFilter('number', 1);

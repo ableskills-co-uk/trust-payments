@@ -41,7 +41,7 @@ class RedirectRequest implements BuilderInterface
 
 	protected $locale;
 
-	public function __construct(
+	function __construct(
 		PriceCurrencyInterface $priceCurrency,
 		TimezoneInterface $timezone,
 		ConfigInterface $config,
@@ -65,7 +65,7 @@ class RedirectRequest implements BuilderInterface
 		$this->locale             = $locale;
 	}
 
-	public function build(array $buildSubject)
+	function build(array $buildSubject)
 	{
 		$order = $buildSubject['order'];
 		$payment = $order->getPayment();

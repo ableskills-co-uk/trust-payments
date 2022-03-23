@@ -14,7 +14,7 @@ class ValidateMultiShipping
 	 * @param $result
 	 * @return bool
 	 */
-	public function afterIsMultishippingCheckoutAvailable($subject, $result)
+	function afterIsMultishippingCheckoutAvailable($subject, $result)
 	{
 		$quote = $subject->getQuote();
 		if ($quote) {

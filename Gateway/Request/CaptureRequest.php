@@ -67,7 +67,7 @@ class CaptureRequest implements BuilderInterface
 	 * @param PriceCurrencyInterface $priceCurrency
 	 * @param SubscriptionHelper $subscriptionHelper
 	 */
-	public function __construct(
+	function __construct(
         ConfigInterface $config,
         Logger $logger,
         \Magento\Framework\App\State $state,
@@ -90,7 +90,7 @@ class CaptureRequest implements BuilderInterface
      * @return array
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function build(array $buildSubject)
+    function build(array $buildSubject)
     {
         if (!isset($buildSubject['payment'])
             || !$buildSubject['payment'] instanceof PaymentDataObjectInterface

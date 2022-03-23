@@ -12,7 +12,7 @@ class OrderResponseHandle implements HandlerInterface
 {
 	protected $formatPrice;
 
-	public function __construct(Data $formatPrice)
+	function __construct(Data $formatPrice)
 	{
 		$this->formatPrice = $formatPrice;
 	}
@@ -22,7 +22,7 @@ class OrderResponseHandle implements HandlerInterface
 	 * @param array $response
 	 * @throws \Magento\Framework\Exception\LocalizedException
 	 */
-	public function handle(array $handlingSubject, array $response)
+	function handle(array $handlingSubject, array $response)
 	{
 		$paymentDO = SubjectReader::readPayment($handlingSubject);
 

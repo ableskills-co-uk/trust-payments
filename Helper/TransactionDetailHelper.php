@@ -19,7 +19,7 @@ class TransactionDetailHelper
      * TransactionDetailHelper constructor.
      * @param JsonFactory $jsonFactory
      */
-    public function __construct(JsonFactory $jsonFactory)
+    function __construct(JsonFactory $jsonFactory)
     {
         $this->jsonFactory = $jsonFactory;
     }
@@ -29,7 +29,7 @@ class TransactionDetailHelper
      * @param $config
      * @return \Magento\Framework\Controller\Result\Json
      */
-    public function getTransactionDetail($dataPayment, $config)
+    function getTransactionDetail($dataPayment, $config)
     {
         $config->setMethodCode('secure_trading');
 

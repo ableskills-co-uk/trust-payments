@@ -32,7 +32,7 @@ class ModuleVersion extends Field
      * @param \Magento\Framework\Module\FullModuleList $fullModuleList
      * @param array $data
      */
-    public function __construct(
+    function __construct(
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Framework\Module\FullModuleList $fullModuleList,
         array $data = []
@@ -46,7 +46,7 @@ class ModuleVersion extends Field
 	 * @param AbstractElement $element
 	 * @return string
 	 */
-	public function render(AbstractElement $element)
+	function render(AbstractElement $element)
     {
         $moduleVersion = $this->fullModuleList->getOne('SecureTrading_Trust');
         $text = "<b>Module Version: </b>".$moduleVersion['setup_version']."</br><p>The fast and secure way to accept e-commerce payments from cards, mobile wallets and more. Our customisation options enable you to deploy a seamless checkout experience for your customers.</p>";

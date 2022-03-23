@@ -37,7 +37,7 @@ class RedirectToPaymentPage
 
 	protected $commandPool;
 
-	public function __construct(Context $context,
+	function __construct(Context $context,
 								SessionManagerInterface $session,
 								Multishipping $checkoutMultishipping,
 								MultiShippingHelper $helper,
@@ -55,7 +55,7 @@ class RedirectToPaymentPage
 	 * @param \Closure $proceed
 	 * @return \Magento\Framework\Controller\Result\Redirect|mixed
 	 */
-	public function aroundExecute(\Magento\Multishipping\Controller\Checkout\OverviewPost $subject, \Closure $proceed)
+	function aroundExecute(\Magento\Multishipping\Controller\Checkout\OverviewPost $subject, \Closure $proceed)
 	{
 		$paymentInstance = $this->checkout->getQuote()->getPayment();
 		$result          = $proceed();

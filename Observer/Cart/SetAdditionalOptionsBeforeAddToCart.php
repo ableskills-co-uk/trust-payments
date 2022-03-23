@@ -46,7 +46,7 @@ class SetAdditionalOptionsBeforeAddToCart implements ObserverInterface
 	 * @param Json $json
 	 * @param SubscriptionHelper $helper
 	 */
-	public function __construct(
+	function __construct(
 		RequestInterface $request,
 		Json $json,
 		SubscriptionHelper $helper
@@ -59,7 +59,7 @@ class SetAdditionalOptionsBeforeAddToCart implements ObserverInterface
 	/**
 	 * @param \Magento\Framework\Event\Observer $observer
 	 */
-	public function execute(\Magento\Framework\Event\Observer $observer)
+	function execute(\Magento\Framework\Event\Observer $observer)
 	{
 		if ($this->_request->getFullActionName() == 'checkout_cart_add') {
 			//checking when product is adding to cart

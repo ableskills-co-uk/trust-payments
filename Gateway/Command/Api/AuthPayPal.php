@@ -29,7 +29,7 @@ class AuthPayPal implements CommandInterface
 
     protected $errorMessageMapper;
 
-    public function __construct(
+    function __construct(
         BuilderInterface $requestBuilder,
         HandlerInterface $handler,
         TransferFactoryInterface $transferFactory,
@@ -47,7 +47,7 @@ class AuthPayPal implements CommandInterface
     }
 
 
-    public function execute(array $commandSubject)
+    function execute(array $commandSubject)
     {
         try {
             $data = $this->requestBuilder->build($commandSubject);

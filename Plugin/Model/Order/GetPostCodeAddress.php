@@ -14,7 +14,7 @@ class GetPostCodeAddress
 	 * @param $result
 	 * @return string
 	 */
-	public function afterGetPostcode($subject, $result)
+	function afterGetPostcode($subject, $result)
 	{
 		if ($result == null)
 			return '';

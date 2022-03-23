@@ -50,7 +50,7 @@ class CancelPendingOrder
      * @param \Magento\Sales\Model\ResourceModel\Order\CollectionFactory $orderCollectionFactory
      * @param \SecureTrading\Trust\Helper\Logger\Logger $logger
      */
-    public function __construct(
+    function __construct(
         \Magento\Framework\App\Config\ScopeConfigInterface $config,
 	    \Magento\Sales\Model\ResourceModel\Order\Payment\CollectionFactory $paymentCollectionFactory,
         \Magento\Sales\Model\ResourceModel\Order\CollectionFactory $orderCollectionFactory,
@@ -65,7 +65,7 @@ class CancelPendingOrder
 	/**
 	 * @throws \Exception
 	 */
-	public function execute()
+	function execute()
 	{
 		//Checkout Sessions expire 3 hours after creation
         $timeIntervalConfig = $this->config->getValue(self::TIME_INTERVAL_CANCEL_ORDER_PATH);

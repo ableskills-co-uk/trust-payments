@@ -129,7 +129,7 @@ class SubscriptionHelper
 
 	protected $fullModuleList;
 
-	public function __construct(OrderFactory $orderFactory,
+	function __construct(OrderFactory $orderFactory,
 	                            PaymentFactory $paymentFactory,
 	                            AddressFactory $addressFactory,
 	                            SubscriptionFactory $subscriptionFactory,
@@ -167,7 +167,7 @@ class SubscriptionHelper
 	 * @param $parentOrder
 	 * @return Order
 	 */
-	public function createOrder($parentOrder)
+	function createOrder($parentOrder)
 	{
 		if (!empty($parentOrder)) {
 			$order     = $parentOrder;
@@ -243,7 +243,7 @@ class SubscriptionHelper
 	 * @param $subscriptionData
 	 * @throws \Exception
 	 */
-	public function addSubscriptionItem($newOrder, $subscriptionData)
+	function addSubscriptionItem($newOrder, $subscriptionData)
 	{
 		if (!empty($subscriptionData['transactionreference'])) {
 			$subscription       = $this->subscriptionFactory->create()->loadByTransactionId($subscriptionData['transactionreference']);
@@ -268,7 +268,7 @@ class SubscriptionHelper
 	 * @param $parentSubscription
 	 * @param $subscriptionData
 	 */
-	public function isComplete($parentSubscription, $subscriptionData)
+	function isComplete($parentSubscription, $subscriptionData)
 	{
 		if (!empty($parentSubscription->getId())) {
 			$numberOfSubscription = $this->subsCollectionFactory->create()
@@ -291,7 +291,7 @@ class SubscriptionHelper
 	 * @param $style
 	 * @return float|int|string
 	 */
-	public function getValue($priceProduct, int $subscriptionFinalNumber, int $skipTheFirstPayment, $style)
+	function getValue($priceProduct, int $subscriptionFinalNumber, int $skipTheFirstPayment, $style)
 	{
 		$price = 0;
 		if ($priceProduct) {
@@ -314,7 +314,7 @@ class SubscriptionHelper
 	 * @param $style
 	 * @return string
 	 */
-	public function getDescription(int $skipTheFirstPayment, int $frequency, $unit, int $finalNumber, $priceProduct, $style){
+	function getDescription(int $skipTheFirstPayment, int $frequency, $unit, int $finalNumber, $priceProduct, $style){
 		$stylePrice = $style;
 		$unit = strtolower($unit);
 //		$unit = strtoupper(substr($unit,0,1)).substr($unit,1);
@@ -331,7 +331,7 @@ class SubscriptionHelper
 	 * @return mixed
 	 * @throws \Magento\Framework\Exception\NoSuchEntityException
 	 */
-	public function getCurrentCurrencyCode()
+	function getCurrentCurrencyCode()
 	{
 		return $this->storeManager->getStore()->getCurrentCurrencyCode();
 	}
@@ -339,7 +339,7 @@ class SubscriptionHelper
 	/**
 	 * @return mixed
 	 */
-	public function getSitereference()
+	function getSitereference()
 	{
 		return $this->scopeConfig->getValue('payment/secure_trading/site_reference', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
 	}
@@ -347,7 +347,7 @@ class SubscriptionHelper
 	/**
 	 * @return mixed
 	 */
-	public function getAnimatedCard()
+	function getAnimatedCard()
 	{
 		return $this->scopeConfig->getValue('payment/api_secure_trading/animated_card', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
 	}
@@ -356,7 +356,7 @@ class SubscriptionHelper
 	 * @return string
 	 * @throws \Magento\Framework\Exception\LocalizedException
 	 */
-	public function getAccountTypeDescription()
+	function getAccountTypeDescription()
 	{
 		return $this->state->getAreaCode() == Area::AREA_ADMINHTML ? 'MOTO' : 'ECOM';
 	}
@@ -365,7 +365,7 @@ class SubscriptionHelper
 	 * @param $paymentTypeDescription
 	 * @return mixed
 	 */
-	public function getPaymentType($paymentTypeDescription)
+	function getPaymentType($paymentTypeDescription)
 	{
 		$listType = [
 			'VISA'       => 'VI',
@@ -382,7 +382,7 @@ class SubscriptionHelper
 	 * @param $cardExpire
 	 * @return array
 	 */
-	public function getCardExpire($cardExpire)
+	function getCardExpire($cardExpire)
 	{
 		return isset($cardExpire) ? array(explode("/",$cardExpire)) : array();
 	}
@@ -391,7 +391,7 @@ class SubscriptionHelper
 	 * @param $parentTransaction
 	 * @return string
 	 */
-	public function genPublicHash($parentTransaction)
+	function genPublicHash($parentTransaction)
 	{
 		return base64_encode($parentTransaction);
 	}
@@ -401,7 +401,7 @@ class SubscriptionHelper
 	 * @param $order
 	 * @param $payment
 	 */
-	public function saveCreditCard($response, $payment, $order){
+	function saveCreditCard($response, $payment, $order){
 
 		$paymentToken = $this->paymentTokenFactory->create(PaymentTokenFactoryInterface::TOKEN_TYPE_CREDIT_CARD);
 
@@ -431,7 +431,7 @@ class SubscriptionHelper
 		$paymentToken->save();
 	}
 
-	public function processSubscription($payment, $responseParams, $optionSubs)
+	function processSubscription($payment, $responseParams, $optionSubs)
 	{
 		$data = [];
 		$additional_information = $payment->getAdditionalInformation();
@@ -476,7 +476,7 @@ class SubscriptionHelper
 		return array_search($unit,Unit::getOptionArray());
 	}
 
-	public function formatMainAmount($order, $baseAmount)
+	function formatMainAmount($order, $baseAmount)
 	{
 		if ($this->_getCurrencyCode($order) == 'JPY') {
 			return strval(number_format($baseAmount, 0, '', ''));
@@ -484,7 +484,7 @@ class SubscriptionHelper
 		return strval(number_format($baseAmount, 2, '.', ''));
 	}
 
-	public function _formatMainAmount($order, array $buildSubject)
+	function _formatMainAmount($order, array $buildSubject)
 	{
 		if ($this->_getCurrencyCode($order) == 'JPY') {
 			return strval(number_format(SubjectReader::readAmount($buildSubject), 0, '', ''));
@@ -492,12 +492,12 @@ class SubscriptionHelper
 		return strval(number_format(SubjectReader::readAmount($buildSubject), 2, '.', ''));
 	}
 
-	public function _getCurrencyCode($order)
+	function _getCurrencyCode($order)
 	{
 		return $order->getBaseCurrencyCode();
 	}
 
-	public function getSettleduedate($settleDueDate)
+	function getSettleduedate($settleDueDate)
 	{
 		$settleDueDate = (int)$settleDueDate;
 		$daysToAdd     = '+ ' . $settleDueDate . ' days';
@@ -505,7 +505,7 @@ class SubscriptionHelper
 		return $formattedSettleDueDate = date('Y-m-d', strtotime($daysToAdd));
 	}
 
-	public function _processSubscriptionInRequest($order){
+	function _processSubscriptionInRequest($order){
 		$items = $order->getItems();
 		$data = [];
 		foreach($items as $item){
@@ -548,7 +548,7 @@ class SubscriptionHelper
 		return null;
 	}
 
-	public function _processSubscriptionInPayLoad($allVisibleItems, $amount, $currency)
+	function _processSubscriptionInPayLoad($allVisibleItems, $amount, $currency)
 	{
 		foreach ($allVisibleItems as $item) {
 			$options = $item->getProductOptions();
@@ -587,14 +587,14 @@ class SubscriptionHelper
 	 * @return string
 	 * @throws \Magento\Framework\Exception\LocalizedException
 	 */
-	public function _formatTimeStamp()
+	function _formatTimeStamp()
 	{
 		$date = $this->timezone->date();
 		$formattedDate  = $this->timezone->convertConfigTimeToUtc($date);
 		return $formattedDate;
 	}
 
-	public function _formatMainAmountPayLoad($curencyCode, array $buildSubject)
+	function _formatMainAmountPayLoad($curencyCode, array $buildSubject)
 	{
 		if ($curencyCode == 'JPY') {
 			return strval(number_format(SubjectReader::readAmount($buildSubject), 0, '', ''));
@@ -602,7 +602,7 @@ class SubscriptionHelper
 		return strval(number_format(SubjectReader::readAmount($buildSubject), 2, '.', ''));
 	}
 
-	public function getVersionInformation()
+	function getVersionInformation()
 	{
 		$moduleVersion = $this->fullModuleList->getOne('SecureTrading_Trust');
 		$stppVersion   = isset($moduleVersion['setup_version']) ? $moduleVersion['setup_version'] : "";

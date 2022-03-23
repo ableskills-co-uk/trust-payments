@@ -25,7 +25,7 @@ class TokenUiComponentProviderApi implements TokenUiComponentProviderInterface
 	 * @param TokenUiComponentInterfaceFactory $componentFactory
 	 * @param UrlInterface $urlBuilder
 	 */
-	public function __construct(
+	function __construct(
 		TokenUiComponentInterfaceFactory $componentFactory,
 		UrlInterface $urlBuilder
 	) {
@@ -37,7 +37,7 @@ class TokenUiComponentProviderApi implements TokenUiComponentProviderInterface
 	 * @param PaymentTokenInterface $paymentToken
 	 * @return TokenUiComponentInterface
 	 */
-	public function getComponentForToken(PaymentTokenInterface $paymentToken)
+	function getComponentForToken(PaymentTokenInterface $paymentToken)
 	{
 		$jsonDetails = json_decode($paymentToken->getTokenDetails() ?: '{}', true);
 		$component   = $this->componentFactory->create(

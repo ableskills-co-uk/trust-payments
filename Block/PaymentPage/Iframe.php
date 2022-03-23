@@ -30,7 +30,7 @@ class Iframe extends Template
 	 * @param ConfigInterface $config
 	 * @param array $data
 	 */
-	public function __construct(
+	function __construct(
 		Template\Context $context,
 		ConfigInterface $config,
 		\Magento\Sales\Model\OrderFactory $orderFactory,
@@ -44,7 +44,7 @@ class Iframe extends Template
 	/**
 	 * @return string
 	 */
-	public function gePaymentUrl()
+	function gePaymentUrl()
 	{
 		return $this->getUrl('securetrading/paymentpage/raw',
 			['orderId'       => $this->getRequest()->getParam('orderId'),
@@ -54,7 +54,7 @@ class Iframe extends Template
 	/**
 	 * @return mixed
 	 */
-	public function getWidth()
+	function getWidth()
 	{
 		return $this->config->getValue(DATA::IFRAME_WIDTH);
 	}
@@ -62,7 +62,7 @@ class Iframe extends Template
 	/**
 	 * @return mixed
 	 */
-	public function getHeight()
+	function getHeight()
 	{
 		return $this->config->getValue(DATA::IFRAME_HEIGHT);
 	}

@@ -17,7 +17,7 @@ class ReCalculateTotalPaid
 	 * @param callable $proceed
 	 * @return mixed
 	 */
-	public function aroundPay(Invoice $subject, callable $proceed)
+	function aroundPay(Invoice $subject, callable $proceed)
 	{
 		$order   = $subject->getOrder();
 		$payment = $order->getPayment();

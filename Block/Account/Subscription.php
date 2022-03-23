@@ -58,7 +58,7 @@ class Subscription extends Template
 	 * @param \Magento\Sales\Model\OrderFactory $orderFactory
 	 * @param array $data
 	 */
-	public function __construct(
+	function __construct(
 		Template\Context $context,
 		\Magento\Sales\Model\ResourceModel\Order\CollectionFactory $orderCollectionFactory,
 		\Magento\Customer\Model\Session $customerSession,
@@ -115,7 +115,7 @@ class Subscription extends Template
 	/**
 	 * @return string
 	 */
-	public function getPagerHtml()
+	function getPagerHtml()
 	{
 		return $this->getChildHtml('pager');
 	}
@@ -123,7 +123,7 @@ class Subscription extends Template
 	/**
 	 * @return mixed
 	 */
-	public function getParentId()
+	function getParentId()
 	{
 		$parentId = $this->registry->registry('order_id');
 		return $parentId;

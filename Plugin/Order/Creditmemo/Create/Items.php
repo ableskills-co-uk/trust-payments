@@ -12,7 +12,7 @@ class Items extends \Magento\Sales\Block\Adminhtml\Order\Creditmemo\Create\Items
      * @param $layout
      * @return mixed
      */
-    public function afterSetLayout($layout)
+    function afterSetLayout($layout)
     {
         if($this->getRequest()->getParam('invoice_id'))
         {

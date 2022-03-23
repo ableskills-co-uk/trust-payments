@@ -115,7 +115,7 @@ class GenerateJwt extends \Magento\Framework\App\Action\Action
      * @param Overview $checkoutOverview
      * @param ScopeConfigInterface $scopeConfig
      */
-    public function __construct(
+    function __construct(
 		Context $context,
 		\Magento\Sales\Model\OrderFactory $orderFactory,
 		\Magento\Framework\Controller\Result\Json $json,
@@ -147,7 +147,7 @@ class GenerateJwt extends \Magento\Framework\App\Action\Action
 	/**
 	 * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Json|\Magento\Framework\Controller\ResultInterface
 	 */
-	public function execute()
+	function execute()
 	{
 		try {
 			$data = $this->getRequest()->getParams();
@@ -255,7 +255,7 @@ class GenerateJwt extends \Magento\Framework\App\Action\Action
      * @param $order
      * @return array
      */
-    public function setShippingAddress($order)
+    function setShippingAddress($order)
 	{
 	    $streetAddress = $order->getBillingAddress()->getStreet();
 		$shippingAddress =

@@ -33,7 +33,7 @@ class AcceptedCards implements \Magento\Framework\Option\ArrayInterface
      *
      * @return array
      */
-    public function toOptionArray()
+    function toOptionArray()
     {
         $result = [];
         if(!empty($this->toArray())){
@@ -50,7 +50,7 @@ class AcceptedCards implements \Magento\Framework\Option\ArrayInterface
      *
      * @return array
      */
-    public function toArray()
+    function toArray()
     {
         return array(
             self::CARD_AMEX             => 'American Express',

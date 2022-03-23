@@ -26,7 +26,7 @@ class UpdateAmountCommand extends AbstractCommand
 	 * @return \Magento\Payment\Gateway\Command\ResultInterface|void|null
 	 * @throws CommandException
 	 */
-	public function execute(array $commandSubject)
+	function execute(array $commandSubject)
 	{
 		$data = $this->requestBuilder->build($commandSubject);
 		$this->processUpdate($commandSubject, $data['update']);
@@ -36,7 +36,7 @@ class UpdateAmountCommand extends AbstractCommand
 	 * @param $data
 	 * @throws CommandException
 	 */
-	public function processUpdate(array $commandSubject, $data)
+	function processUpdate(array $commandSubject, $data)
 	{
 		// @TODO implement exceptions catching
 		//Send API to Update transaction

@@ -131,7 +131,7 @@ class Response extends \Magento\Framework\App\Action\Action
 	 * @param SerializerInterface $serializer
 	 * @param OrderSender $orderSender
 	 */
-	public function __construct(
+	function __construct(
 		Context $context,
 		ConfigInterface $config,
 		\Magento\Sales\Model\OrderFactory $orderFactory,
@@ -168,7 +168,7 @@ class Response extends \Magento\Framework\App\Action\Action
 	/**
 	 * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
 	 */
-	public function execute()
+	function execute()
 	{
 		$this->logger->debug('--- Execute Response ---');
 		$isUsedIframe = 0;
@@ -223,7 +223,7 @@ class Response extends \Magento\Framework\App\Action\Action
 	/**
 	 * @param Order $order
 	 */
-	public function restoredCheckoutSession(Order $order)
+	function restoredCheckoutSession(Order $order)
 	{
 		$this->checkoutSession->setLastOrderId($order->getId());
 		$this->checkoutSession->setLastRealOrderId($order->getIncrementId());
@@ -231,7 +231,7 @@ class Response extends \Magento\Framework\App\Action\Action
 		$this->checkoutSession->setLastSuccessQuoteId($order->getQuoteId());
 	}
 
-	public function redirect($isUsedIframe, $redirectPath, $params = [])
+	function redirect($isUsedIframe, $redirectPath, $params = [])
 	{
 		if ($isUsedIframe == 1) {
 			return $this->resultRedirectFactory->create()->setPath('securetrading/paymentpage/redirect?redirect_path='.urlencode($redirectPath), $params);

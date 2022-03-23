@@ -16,7 +16,7 @@ class Type extends AbstractSource implements SourceInterface, OptionSourceInterf
 	/**
 	 * @return array
 	 */
-	public function getAllOptions()
+	function getAllOptions()
 	{
 		$result = [];
 

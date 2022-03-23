@@ -28,7 +28,7 @@ class STSortLink extends \Magento\Framework\View\Element\Html\Link\Current imple
 	 * @param DefaultPathInterface $defaultPath
 	 * @param array $data
 	 */
-	public function __construct(ProductMetadata $productMetaData, Context $context, DefaultPathInterface $defaultPath, array $data = [])
+	function __construct(ProductMetadata $productMetaData, Context $context, DefaultPathInterface $defaultPath, array $data = [])
 	{
 		$this->productMetaData = $productMetaData;
 		parent::__construct($context, $defaultPath, $data);
@@ -37,7 +37,7 @@ class STSortLink extends \Magento\Framework\View\Element\Html\Link\Current imple
 	/**
 	 * @return int|mixed
 	 */
-	public function getSortOrder()
+	function getSortOrder()
 	{
 		return $this->getData(self::SORT_ORDER);
 	}
@@ -45,7 +45,7 @@ class STSortLink extends \Magento\Framework\View\Element\Html\Link\Current imple
 	/**
 	 * @return string
 	 */
-	public function _toHtml()
+	function _toHtml()
 	{
 		if (version_compare($this->productMetaData->getVersion(), "2.3.3") < 0)
 			return "";

@@ -27,7 +27,7 @@ class CreateInvoiceToOrder implements ObserverInterface
 	 */
 	protected $orderConverter;
 
-	public function __construct(
+	function __construct(
 		\Magento\Sales\Model\Service\InvoiceService $invoiceService,
 		\Magento\Framework\DB\Transaction $transaction,
 		\Magento\Sales\Model\Convert\Order $orderConverter,
@@ -40,7 +40,7 @@ class CreateInvoiceToOrder implements ObserverInterface
 		$this->serializer     = $serializer;
 	}
 
-	public function execute(Observer $observer)
+	function execute(Observer $observer)
 	{
 		$order = $observer->getOrder();
 		$payment = $order->getPayment();
@@ -75,7 +75,7 @@ class CreateInvoiceToOrder implements ObserverInterface
 		}
 	}
 
-	public function createInstallmentInvoice(Order $order, array $stData, array $options, $isFinal)
+	function createInstallmentInvoice(Order $order, array $stData, array $options, $isFinal)
 	{
 		$state = Order::STATE_PROCESSING;
 		$baseAmount = $stData['baseamount'];

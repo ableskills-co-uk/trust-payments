@@ -35,7 +35,7 @@ class OrderRequest implements BuilderInterface
 
 	protected $subscriptionHelper;
 
-	public function __construct(
+	function __construct(
 		PriceCurrencyInterface $priceCurrency,
 		TimezoneInterface $timezone,
 		ConfigInterface $config,
@@ -55,7 +55,7 @@ class OrderRequest implements BuilderInterface
 		$this->subscriptionHelper = $subscriptionHelper;
 	}
 
-	public function build(array $buildSubject)
+	function build(array $buildSubject)
 	{
 		if (!isset($buildSubject['payment'])
 			|| !$buildSubject['payment'] instanceof PaymentDataObjectInterface
