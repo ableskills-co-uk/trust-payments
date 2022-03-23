@@ -171,12 +171,17 @@ class Response extends \Magento\Framework\App\Action\Action
 	function execute()
 	{
 		$this->logger->debug('--- Execute Response ---');
-		$isUsedIframe = 0;
+		# 2022-03-23 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+		# The previous code:
+		#	$isUsedIframe = 0;		
+		$isUsedIframe = 1;
 		try {
 			$responseParams = $this->getRequest()->getParams();
-			if (isset($responseParams['isusediframe'])) {
-				$isUsedIframe = $responseParams['isusediframe'];
-			}
+			# 2022-03-23 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+			# The previous code:
+			#	if (isset($responseParams['isusediframe'])) {
+			#		$isUsedIframe = $responseParams['isusediframe'];
+			#	}
 			if ($responseParams['paymenttypedescription'] == 'ZIP') {
 				return $this->redirect($isUsedIframe, 'securetrading/apisecuretrading/ZipPaymentReturnUrl', $responseParams);
 			}
@@ -231,8 +236,7 @@ class Response extends \Magento\Framework\App\Action\Action
 		$this->checkoutSession->setLastSuccessQuoteId($order->getQuoteId());
 	}
 
-	function redirect($isUsedIframe, $redirectPath, $params = [])
-	{
+	function redirect($isUsedIframe, $redirectPath, $params = []) {
 		if ($isUsedIframe == 1) {
 			return $this->resultRedirectFactory->create()->setPath('securetrading/paymentpage/redirect?redirect_path='.urlencode($redirectPath), $params);
 		} else {
