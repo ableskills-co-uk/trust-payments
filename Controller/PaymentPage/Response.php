@@ -138,10 +138,10 @@ class Response extends \Magento\Framework\App\Action\Action
 		Session $checkoutSession,
 		CommandPoolInterface $commandPool,
 		PaymentTokenFactoryInterface $paymentTokenFactory,
-        OrderPaymentExtensionInterfaceFactory $extensionInterfaceFactory,
+		OrderPaymentExtensionInterfaceFactory $extensionInterfaceFactory,
 		Logger $logger,
-        JWT $jwt,
-        Json $json,
+		JWT $jwt,
+		Json $json,
 		SubscriptionFactory $subscriptionFactory,
 		SubscriptionHelper $subscriptionHelper,
 		MultiShippingFactory $multiShippingFactory,
@@ -177,9 +177,9 @@ class Response extends \Magento\Framework\App\Action\Action
 			if (isset($responseParams['isusediframe'])) {
 				$isUsedIframe = $responseParams['isusediframe'];
 			}
-            if ($responseParams['paymenttypedescription'] == 'ZIP') {
-                return $this->redirect($isUsedIframe, 'securetrading/apisecuretrading/ZipPaymentReturnUrl', $responseParams);
-            }
+			if ($responseParams['paymenttypedescription'] == 'ZIP') {
+				return $this->redirect($isUsedIframe, 'securetrading/apisecuretrading/ZipPaymentReturnUrl', $responseParams);
+			}
 			$multiShippingSetId = isset($responseParams['multishippingsetid']) ? $responseParams['multishippingsetid'] : null;
 			$isMultiShipping    = isset($responseParams['ismultishipping']) ? $responseParams['ismultishipping'] : 0;
 			if (!empty($responseParams)) {
@@ -303,10 +303,10 @@ class Response extends \Magento\Framework\App\Action\Action
 			$this->logger->debug('--- Data to save subscription: ', array($data));
 			$subscription   = $this->subscriptionFactory->create();
 			if( empty($subscription->load($responseParams['transactionreference'],'transaction_id')->getData()))
-            {
-                $subscription->setData($data);
-                $subscription->save();
-            }
+			{
+				$subscription->setData($data);
+				$subscription->save();
+			}
 		}
 	}
 
@@ -401,95 +401,95 @@ class Response extends \Magento\Framework\App\Action\Action
 	 * @return |null
 	 */
 	protected function saveCardInfotoVault($response, $payment, $order)
-    {
-        if ($order->getCustomerIsGuest() == 0)
-        {
-            $cardDigits = $response['maskedpan'];
-            $accountType = $response['accounttypedescription'];
-            $paymentType = $this->getPaymentType($response['paymenttypedescription']);
-            $parentTrans = $response['transactionreference'];
-            $publichash = $this->genPublicHash($response['transactionreference']);
-            $expireTime = $this->getExpireTime($order->getCreatedAt());
-            $customerId = $order->getCustomerId();
-            $detail = $this->json->serialize([
-                "maskedpan"     => substr($cardDigits,-4),
-                "cardExpire"    => $this->getCardExpire($response['expirydate']),
-                "accountType"   => $accountType,
-                "paymentType"   => $paymentType,
-                "payment_action"=> $payment->getAdditionalInformation('payment_action'),
-                "parenttransactionreference" => $parentTrans
-            ]);
-            $paymentToken = $this->paymentTokenFactory->create(PaymentTokenFactoryInterface::TOKEN_TYPE_CREDIT_CARD);
+	{
+		if ($order->getCustomerIsGuest() == 0)
+		{
+			$cardDigits = $response['maskedpan'];
+			$accountType = $response['accounttypedescription'];
+			$paymentType = $this->getPaymentType($response['paymenttypedescription']);
+			$parentTrans = $response['transactionreference'];
+			$publichash = $this->genPublicHash($response['transactionreference']);
+			$expireTime = $this->getExpireTime($order->getCreatedAt());
+			$customerId = $order->getCustomerId();
+			$detail = $this->json->serialize([
+				"maskedpan"     => substr($cardDigits,-4),
+				"cardExpire"    => $this->getCardExpire($response['expirydate']),
+				"accountType"   => $accountType,
+				"paymentType"   => $paymentType,
+				"payment_action"=> $payment->getAdditionalInformation('payment_action'),
+				"parenttransactionreference" => $parentTrans
+			]);
+			$paymentToken = $this->paymentTokenFactory->create(PaymentTokenFactoryInterface::TOKEN_TYPE_CREDIT_CARD);
 
-            if (!isset($response['transactionreference']) || empty($response['transactionreference']))
-            {
-                return null;
-            }
+			if (!isset($response['transactionreference']) || empty($response['transactionreference']))
+			{
+				return null;
+			}
 
-            $paymentToken->setCustomerId($customerId);
-            $paymentToken->setGatewayToken($parentTrans);
-            $paymentToken->setTokenDetails($detail);
-            $paymentToken->setExpiresAt($expireTime);
-            $paymentToken->setPaymentMethodCode($payment->getMethod());
-            $paymentToken->setPublicHash($publichash);
-            $paymentToken->save();
-        }
-    }
+			$paymentToken->setCustomerId($customerId);
+			$paymentToken->setGatewayToken($parentTrans);
+			$paymentToken->setTokenDetails($detail);
+			$paymentToken->setExpiresAt($expireTime);
+			$paymentToken->setPaymentMethodCode($payment->getMethod());
+			$paymentToken->setPublicHash($publichash);
+			$paymentToken->save();
+		}
+	}
 
 	/**
 	 * @param $time
 	 * @return false|int|string
 	 */
 	private function getExpireTime($time)
-    {
-        $expireTime = strtotime($time);
-        $expireTime = date('Y-m-d H:i:s',(int)$expireTime + 2592000);
-        return $expireTime;
-    }
+	{
+		$expireTime = strtotime($time);
+		$expireTime = date('Y-m-d H:i:s',(int)$expireTime + 2592000);
+		return $expireTime;
+	}
 
 	/**
 	 * @param $paymentTypeDescription
 	 * @return mixed
 	 */
 	private function getPaymentType($paymentTypeDescription)
-    {
-        $listType = [
-            'VISA'       => 'VI',
-            'MASTERCARD' => 'MC',
-        ];
+	{
+		$listType = [
+			'VISA'       => 'VI',
+			'MASTERCARD' => 'MC',
+		];
 
-        key_exists($paymentTypeDescription,$listType) ?
-            $paymentType = $listType[$paymentTypeDescription] : $paymentType = $paymentTypeDescription;
+		key_exists($paymentTypeDescription,$listType) ?
+			$paymentType = $listType[$paymentTypeDescription] : $paymentType = $paymentTypeDescription;
 
-        return $paymentType;
-    }
+		return $paymentType;
+	}
 
 	/**
 	 * @param $cardExpire
 	 * @return array
 	 */
 	private function getCardExpire($cardExpire)
-    {
-        return isset($cardExpire) ? array(explode("/",$cardExpire)) : array();
-    }
+	{
+		return isset($cardExpire) ? array(explode("/",$cardExpire)) : array();
+	}
 
 	/**
 	 * @param $parentTransaction
 	 * @return string
 	 */
 	private function genPublicHash($parentTransaction)
-    {
-        return base64_encode($parentTransaction);
-    }
+	{
+		return base64_encode($parentTransaction);
+	}
 
 	/**
 	 * @param $unit
 	 * @return false|int|string
 	 */
 	protected function convertUnit($unit)
-    {
-        return array_search($unit,Unit::getOptionArray());
-    }
+	{
+		return array_search($unit,Unit::getOptionArray());
+	}
 
 	/**
 	 * @param $type
