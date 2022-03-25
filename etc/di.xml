@@ -3,6 +3,123 @@
 	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
 	xsi:noNamespaceSchemaLocation='urn:magento:framework:ObjectManager/etc/config.xsd'
 >
+	<type name='Magento\Sales\Model\Order\Payment\State\OrderCommand'>
+		<plugin name='secure_trading_order_command' type='SecureTrading\Trust\Plugin\Model\Order\Payment\State\OrderCommand'/>
+	</type>
+	<type name='SecureTrading\Trust\Controller\PaymentPage\Response'>
+		<arguments>
+			<argument name='config' xsi:type='object'>SecureTradingConfig</argument>
+			<argument name='commandPool' xsi:type='object'>SecureTradingCommandPool</argument>
+		</arguments>
+	</type>
+	<type name='SecureTrading\Trust\Block\PaymentPage\Info'>
+		<arguments>
+			<argument name='config' xsi:type='object'>SecureTradingConfig</argument>
+		</arguments>
+	</type>
+	<type name='SecureTrading\Trust\Block\PaymentPage\Iframe'>
+		<arguments>
+			<argument name='config' xsi:type='object'>SecureTradingConfig</argument>
+		</arguments>
+	</type>
+	<type name='SecureTrading\Trust\Block\Adminhtml\PaymentPage\Redirect'>
+		<arguments>
+			<argument name='config' xsi:type='object'>SecureTradingConfig</argument>
+		</arguments>
+	</type>
+	<type name='SecureTrading\Trust\Block\Adminhtml\ApiSecureTradinf\Redirect'>
+		<arguments>
+			<argument name='config' xsi:type='object'>SecureTradingConfig</argument>
+		</arguments>
+	</type>
+	<type name='SecureTrading\Trust\Controller\Adminhtml\PaymentPage\Response'>
+		<arguments>
+			<argument name='config' xsi:type='object'>SecureTradingConfig</argument>
+			<argument name='commandPool' xsi:type='object'>SecureTradingCommandPool</argument>
+		</arguments>
+	</type>
+	<type name='SecureTrading\Trust\Controller\Adminhtml\ApiSecureTrading\CardUrl'>
+		<arguments>
+			<argument name='config' xsi:type='object'>SecureTradingConfig</argument>
+			<argument name='commandPool' xsi:type='object'>SecureTradingApiCommandPool</argument>
+		</arguments>
+	</type>
+	<type name='SecureTrading\Trust\Controller\ApiSecureTrading\CardUrl'>
+		<arguments>
+			<argument name='config' xsi:type='object'>SecureTradingApiConfig</argument>
+			<argument name='commandPool' xsi:type='object'>SecureTradingApiCommandPool</argument>
+		</arguments>
+	</type>
+	<type name='Magento\Sales\Controller\Adminhtml\Order\Create\Save'>
+		<plugin name='secure_trading_moto' type='SecureTrading\Trust\Plugin\Controller\Adminhtml\Order\Create\Save'/>
+	</type>
+	<type name='SecureTrading\Trust\Helper\Logger\Logger'>
+		<arguments>
+			<argument name='name' xsi:type='string'>SecureTrading</argument>
+			<argument name='handlers' xsi:type='array'>
+				<item name='system' xsi:type='object'>SecureTrading\Trust\Helper\Logger\Handler</item>
+			</argument>
+		</arguments>
+	</type>
+	<!-- Convert options from quote to order-->
+	<type name='Magento\Quote\Model\Quote\Item\ToOrderItem'>
+		<plugin name='subscription_convert_options_to_order' type='SecureTrading\Trust\Plugin\Quote\QuoteItemToOrderItem'/>
+	</type>
+	<!-- Subscription Grid Collection-->
+	<type name='Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory'>
+		<arguments>
+			<argument name='collections' xsi:type='array'>
+				<item name='subscription_listing_data_source' xsi:type='string'>SecureTrading\Trust\Model\ResourceModel\Subscription\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<!-- Show subscription options for item -->
+	<type name='Magento\Catalog\Helper\Product\Configuration'>
+		<plugin name='show_subscription_options' type='SecureTrading\Trust\Plugin\Catalog\Helper\Product\ShowSubscriptionOption'/>
+	</type>
+	<!-- Multishipping Helper -->
+	<type name='SecureTrading\Trust\Helper\MultiShippingHelper'>
+		<arguments>
+			<argument name='config' xsi:type='object'>SecureTradingConfig</argument>
+		</arguments>
+	</type>
+	<!-- Create authorize transaction -->
+	<type name='SecureTrading\Trust\Gateway\Command\CapturePartialCommand'>
+		<arguments>
+			<argument name='commandPool' xsi:type='object'>SecureTradingCommandPool</argument>
+		</arguments>
+	</type>
+	<!-- Re calculate total paid -->
+	<type name='Magento\Sales\Model\Order\Invoice'>
+		<plugin name='re_calculate_total_paid' type='SecureTrading\Trust\Plugin\Model\Order\Invoice\ReCalculateTotalPaid'/>
+	</type>
+	<type name='SecureTrading\Trust\Controller\Subscription\Cancel'>
+		<arguments>
+			<argument name='config' xsi:type='object'>SecureTradingConfig</argument>
+			<argument name='commandPool' xsi:type='object'>SecureTradingCommandPool</argument>
+			<argument name='commandPoolAPI' xsi:type='object'>SecureTradingApiCommandPool</argument>
+		</arguments>
+	</type>
+	<type name='SecureTrading\Trust\Controller\Adminhtml\Subscription\Cancel'>
+		<arguments>
+			<argument name='config' xsi:type='object'>SecureTradingConfig</argument>
+			<argument name='commandPool' xsi:type='object'>SecureTradingCommandPool</argument>
+		</arguments>
+	</type>
+	<!-- Fix getPostCode return null instead of string value -->
+	<type name='Magento\Sales\Api\Data\OrderAddressInterface'>
+		<plugin name='get_post_code' type='SecureTrading\Trust\Plugin\Model\Order\GetPostCodeAddress'/>
+	</type>
+	<type name='SecureTrading\Trust\Block\Catalog\Product\View'>
+		<arguments>
+			<argument name='config' xsi:type='object'>SecureTradingConfig</argument>
+		</arguments>
+	</type>
+	<type name='SecureTrading\Trust\Plugin\Multishipping\Controller\Checkout\RedirectToPaymentPage'>
+		<arguments>
+			<argument name='commandPool' xsi:type='object'>SecureTradingApiCommandPool</argument>
+		</arguments>
+	</type>
 	<virtualType name='SecureTradingFacade' type='Magento\Payment\Model\Method\Adapter'>
 		<arguments>
 			<argument name='code' xsi:type='const'>SecureTrading\Trust\Model\Ui\ConfigProvider::CODE</argument>
@@ -201,64 +318,6 @@
 			</argument>
 		</arguments>
 	</virtualType>
-	<type name='Magento\Sales\Model\Order\Payment\State\OrderCommand'>
-		<plugin name='secure_trading_order_command' type='SecureTrading\Trust\Plugin\Model\Order\Payment\State\OrderCommand'/>
-	</type>
-	<type name='SecureTrading\Trust\Controller\PaymentPage\Response'>
-		<arguments>
-			<argument name='config' xsi:type='object'>SecureTradingConfig</argument>
-			<argument name='commandPool' xsi:type='object'>SecureTradingCommandPool</argument>
-		</arguments>
-	</type>
-	<type name='SecureTrading\Trust\Block\PaymentPage\Info'>
-		<arguments>
-			<argument name='config' xsi:type='object'>SecureTradingConfig</argument>
-		</arguments>
-	</type>
-	<type name='SecureTrading\Trust\Block\PaymentPage\Iframe'>
-		<arguments>
-			<argument name='config' xsi:type='object'>SecureTradingConfig</argument>
-		</arguments>
-	</type>
-	<type name='SecureTrading\Trust\Block\Adminhtml\PaymentPage\Redirect'>
-		<arguments>
-			<argument name='config' xsi:type='object'>SecureTradingConfig</argument>
-		</arguments>
-	</type>
-	<type name='SecureTrading\Trust\Block\Adminhtml\ApiSecureTradinf\Redirect'>
-		<arguments>
-			<argument name='config' xsi:type='object'>SecureTradingConfig</argument>
-		</arguments>
-	</type>
-	<type name='SecureTrading\Trust\Controller\Adminhtml\PaymentPage\Response'>
-		<arguments>
-			<argument name='config' xsi:type='object'>SecureTradingConfig</argument>
-			<argument name='commandPool' xsi:type='object'>SecureTradingCommandPool</argument>
-		</arguments>
-	</type>
-	<type name='SecureTrading\Trust\Controller\Adminhtml\ApiSecureTrading\CardUrl'>
-		<arguments>
-			<argument name='config' xsi:type='object'>SecureTradingConfig</argument>
-			<argument name='commandPool' xsi:type='object'>SecureTradingApiCommandPool</argument>
-		</arguments>
-	</type>
-	<type name='SecureTrading\Trust\Controller\ApiSecureTrading\CardUrl'>
-		<arguments>
-			<argument name='config' xsi:type='object'>SecureTradingApiConfig</argument>
-			<argument name='commandPool' xsi:type='object'>SecureTradingApiCommandPool</argument>
-		</arguments>
-	</type>
-	<type name='Magento\Sales\Controller\Adminhtml\Order\Create\Save'>
-		<plugin name='secure_trading_moto' type='SecureTrading\Trust\Plugin\Controller\Adminhtml\Order\Create\Save'/>
-	</type>
-	<type name='SecureTrading\Trust\Helper\Logger\Logger'>
-		<arguments>
-			<argument name='name' xsi:type='string'>SecureTrading</argument>
-			<argument name='handlers' xsi:type='array'>
-				<item name='system' xsi:type='object'>SecureTrading\Trust\Helper\Logger\Handler</item>
-			</argument>
-		</arguments>
-	</type>
 	<!-- Secure Trading Vault Facade    -->
 	<virtualType name='SecureTradingVaultConfig' type='SecureTrading\Trust\Gateway\Config\Config'>
 		<arguments>
@@ -285,11 +344,6 @@
 			<argument name='code' xsi:type='const'>SecureTrading\Trust\Model\Ui\ConfigProvider::VAULT_CODE</argument>
 		</arguments>
 	</virtualType>
-	<type name='SecureTrading\Trust\Block\Catalog\Product\View'>
-		<arguments>
-			<argument name='config' xsi:type='object'>SecureTradingConfig</argument>
-		</arguments>
-	</type>
 	<!-- Secure Trading Api Vault Facade    -->
 	<virtualType name='SecureTradingApiVaultFacade' type='Magento\Vault\Model\Method\Vault'>
 		<arguments>
@@ -316,55 +370,6 @@
 			<argument name='configInterface' xsi:type='object'>SecureTradingVaultApiConfig</argument>
 		</arguments>
 	</virtualType>
-	<!-- Convert options from quote to order-->
-	<type name='Magento\Quote\Model\Quote\Item\ToOrderItem'>
-		<plugin name='subscription_convert_options_to_order' type='SecureTrading\Trust\Plugin\Quote\QuoteItemToOrderItem'/>
-	</type>
-	<!-- Subscription Grid Collection-->
-	<type name='Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory'>
-		<arguments>
-			<argument name='collections' xsi:type='array'>
-				<item name='subscription_listing_data_source' xsi:type='string'>SecureTrading\Trust\Model\ResourceModel\Subscription\Grid\Collection</item>
-			</argument>
-		</arguments>
-	</type>
-	<!-- Show subscription options for item -->
-	<type name='Magento\Catalog\Helper\Product\Configuration'>
-		<plugin name='show_subscription_options' type='SecureTrading\Trust\Plugin\Catalog\Helper\Product\ShowSubscriptionOption'/>
-	</type>
-	<!-- Multishipping Helper -->
-	<type name='SecureTrading\Trust\Helper\MultiShippingHelper'>
-		<arguments>
-			<argument name='config' xsi:type='object'>SecureTradingConfig</argument>
-		</arguments>
-	</type>
-	<!-- Create authorize transaction -->
-	<type name='SecureTrading\Trust\Gateway\Command\CapturePartialCommand'>
-		<arguments>
-			<argument name='commandPool' xsi:type='object'>SecureTradingCommandPool</argument>
-		</arguments>
-	</type>
-	<!-- Re calculate total paid -->
-	<type name='Magento\Sales\Model\Order\Invoice'>
-		<plugin name='re_calculate_total_paid' type='SecureTrading\Trust\Plugin\Model\Order\Invoice\ReCalculateTotalPaid'/>
-	</type>
-	<type name='SecureTrading\Trust\Controller\Subscription\Cancel'>
-		<arguments>
-			<argument name='config' xsi:type='object'>SecureTradingConfig</argument>
-			<argument name='commandPool' xsi:type='object'>SecureTradingCommandPool</argument>
-			<argument name='commandPoolAPI' xsi:type='object'>SecureTradingApiCommandPool</argument>
-		</arguments>
-	</type>
-	<type name='SecureTrading\Trust\Controller\Adminhtml\Subscription\Cancel'>
-		<arguments>
-			<argument name='config' xsi:type='object'>SecureTradingConfig</argument>
-			<argument name='commandPool' xsi:type='object'>SecureTradingCommandPool</argument>
-		</arguments>
-	</type>
-	<!-- Fix getPostCode return null instead of string value -->
-	<type name='Magento\Sales\Api\Data\OrderAddressInterface'>
-		<plugin name='get_post_code' type='SecureTrading\Trust\Plugin\Model\Order\GetPostCodeAddress'/>
-	</type>
 	<!-- Secure Trading Api Facade    -->
 	<virtualType name='SecureTradingApiFacade' type='Magento\Payment\Model\Method\Adapter'>
 		<arguments>
@@ -511,11 +516,6 @@
 			<argument name='config' xsi:type='object'>SecureTradingApiConfig</argument>
 		</arguments>
 	</virtualType>
-	<type name='SecureTrading\Trust\Plugin\Multishipping\Controller\Checkout\RedirectToPaymentPage'>
-		<arguments>
-			<argument name='commandPool' xsi:type='object'>SecureTradingApiCommandPool</argument>
-		</arguments>
-	</type>
 	<virtualType name='SecureTradingApiOrderCommand' type='SecureTrading\Trust\Gateway\Command\OrderCommand'>
 		<arguments>
 			<argument name='requestBuilder' xsi:type='object'>SecureTradingOrderRequest</argument>
