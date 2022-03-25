@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+<config
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd"
+>
 	<virtualType name="SecureTradingFacade" type="Magento\Payment\Model\Method\Adapter">
 		<arguments>
 			<argument name="code" xsi:type="const">SecureTrading\Trust\Model\Ui\ConfigProvider::CODE</argument>
@@ -10,7 +13,6 @@
 			<argument name="commandPool" xsi:type="object">SecureTradingCommandPool</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingValueHandlerPool" type="Magento\Payment\Gateway\Config\ValueHandlerPool">
 		<arguments>
 			<argument name="handlers" xsi:type="array">
@@ -18,19 +20,16 @@
 			</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingConfigValueHandler" type="Magento\Payment\Gateway\Config\ConfigValueHandler">
 		<arguments>
 			<argument name="configInterface" xsi:type="object">SecureTradingConfig</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingConfig" type="SecureTrading\Trust\Gateway\Config\Config">
 		<arguments>
 			<argument name="methodCode" xsi:type="const">SecureTrading\Trust\Model\Ui\ConfigProvider::CODE</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingValidatorPool" type="Magento\Payment\Gateway\Validator\ValidatorPool">
 		<arguments>
 			<argument name="validators" xsi:type="array">
@@ -38,13 +37,11 @@
 			</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingCountryValidator" type="Magento\Payment\Gateway\Validator\CountryValidator">
 		<arguments>
 			<argument name="config" xsi:type="object">SecureTradingConfig</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingCommandPool" type="Magento\Payment\Gateway\Command\CommandPool">
 		<arguments>
 			<argument name="commands" xsi:type="array">
@@ -65,7 +62,6 @@
 			</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingRefundCommand" type="SecureTrading\Trust\Gateway\Command\RefundCommand">
 		<arguments>
 			<argument name="requestBuilder" xsi:type="object">SecureTradingRefundRequestBuilder</argument>
@@ -76,7 +72,6 @@
 			<argument name="commandPool" xsi:type="object">SecureTradingCommandPool</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingSubscriptionStopCommand" type="SecureTrading\Trust\Gateway\Command\SubscriptionStopCommand">
 		<arguments>
 			<argument name="requestBuilder" xsi:type="object">SecureTradingSubscriptionStopRequestBuilder</argument>
@@ -86,7 +81,6 @@
 			<argument name="config" xsi:type="object">SecureTradingConfig</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingApiSubscriptionStopCommand" type="SecureTrading\Trust\Gateway\Command\SubscriptionStopCommand">
 		<arguments>
 			<argument name="requestBuilder" xsi:type="object">SecureTradingSubscriptionStopRequestBuilder</argument>
@@ -96,7 +90,6 @@
 			<argument name="config" xsi:type="object">SecureTradingApiConfig</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingSubscriptionStopRequestBuilder" type="Magento\Payment\Gateway\Request\BuilderComposite">
 		<arguments>
 			<argument name="builders" xsi:type="array">
@@ -105,7 +98,6 @@
 			</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingSubscriptionStopRequest" type="SecureTrading\Trust\Gateway\Request\SubscriptionStopRequest">
 		<arguments>
 			<argument name="config" xsi:type="object">SecureTradingConfig</argument>
@@ -119,25 +111,21 @@
 			</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingRefundRequest" type="SecureTrading\Trust\Gateway\Request\RefundRequest">
 		<arguments>
 			<argument name="config" xsi:type="object">SecureTradingConfig</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingTransactionDetailRequest" type="SecureTrading\Trust\Gateway\Request\TransactionDetailRequest">
 		<arguments>
 			<argument name="config" xsi:type="object">SecureTradingConfig</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingNextRecurTransactionDetailRequest" type="SecureTrading\Trust\Gateway\Request\NextRecurTransactionDetailRequest">
 		<arguments>
 			<argument name="config" xsi:type="object">SecureTradingConfig</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingUpdateAmountCommand" type="SecureTrading\Trust\Gateway\Command\UpdateAmountCommand">
 		<arguments>
 			<argument name="requestBuilder" xsi:type="object">SecureTradingUpdateAmountRequestBuilder</argument>
@@ -147,7 +135,6 @@
 			<argument name="config" xsi:type="object">SecureTradingConfig</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingCancelCommand" type="SecureTrading\Trust\Gateway\Command\CancelCommand">
 		<arguments>
 			<argument name="requestBuilder" xsi:type="object">SecureTradingCancelRequestBuilder</argument>
@@ -157,7 +144,6 @@
 			<argument name="config" xsi:type="object">SecureTradingConfig</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingUpdateAmountRequestBuilder" type="Magento\Payment\Gateway\Request\BuilderComposite">
 		<arguments>
 			<argument name="builders" xsi:type="array">
@@ -165,7 +151,6 @@
 			</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingCancelRequestBuilder" type="Magento\Payment\Gateway\Request\BuilderComposite">
 		<arguments>
 			<argument name="builders" xsi:type="array">
@@ -174,20 +159,16 @@
 			</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingCancelRequest" type="SecureTrading\Trust\Gateway\Request\CancelRequest">
 		<arguments>
 			<argument name="config" xsi:type="object">SecureTradingConfig</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingUpdateAmountRequest" type="SecureTrading\Trust\Gateway\Request\UpdateAmountRequest">
 		<arguments>
 			<argument name="config" xsi:type="object">SecureTradingConfig</argument>
 		</arguments>
 	</virtualType>
-
-
 	<virtualType name="SecureTradingCaptureCommand" type="SecureTrading\Trust\Gateway\Command\CaptureCommand">
 		<arguments>
 			<argument name="requestBuilder" xsi:type="object">SecureTradingCaptureRequest</argument>
@@ -197,26 +178,22 @@
 			<argument name="config" xsi:type="object">SecureTradingConfig</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingCaptureRequest" type="SecureTrading\Trust\Gateway\Request\CaptureRequest">
 		<arguments>
 			<argument name="config" xsi:type="object">SecureTradingConfig</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingOrderCommand" type="SecureTrading\Trust\Gateway\Command\OrderCommand">
 		<arguments>
 			<argument name="requestBuilder" xsi:type="object">SecureTradingOrderRequest</argument>
 			<argument name="handler" xsi:type="object">SecureTradingOrderHandlerComposite</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingOrderRequest" type="SecureTrading\Trust\Gateway\Request\OrderRequest">
 		<arguments>
 			<argument name="config" xsi:type="object">SecureTradingConfig</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingOrderHandlerComposite" type="Magento\Payment\Gateway\Response\HandlerChain">
 		<arguments>
 			<argument name="handlers" xsi:type="array">
@@ -224,67 +201,56 @@
 			</argument>
 		</arguments>
 	</virtualType>
-
 	<type name="Magento\Sales\Model\Order\Payment\State\OrderCommand">
 		<plugin name="secure_trading_order_command" type="SecureTrading\Trust\Plugin\Model\Order\Payment\State\OrderCommand"/>
 	</type>
-
 	<type name="SecureTrading\Trust\Controller\PaymentPage\Response">
 		<arguments>
 			<argument name="config" xsi:type="object">SecureTradingConfig</argument>
 			<argument name="commandPool" xsi:type="object">SecureTradingCommandPool</argument>
 		</arguments>
 	</type>
-
 	<type name="SecureTrading\Trust\Block\PaymentPage\Info">
 		<arguments>
 			<argument name="config" xsi:type="object">SecureTradingConfig</argument>
 		</arguments>
 	</type>
-
 	<type name="SecureTrading\Trust\Block\PaymentPage\Iframe">
 		<arguments>
 			<argument name="config" xsi:type="object">SecureTradingConfig</argument>
 		</arguments>
 	</type>
-
 	<type name="SecureTrading\Trust\Block\Adminhtml\PaymentPage\Redirect">
 		<arguments>
 			<argument name="config" xsi:type="object">SecureTradingConfig</argument>
 		</arguments>
 	</type>
-
 	<type name="SecureTrading\Trust\Block\Adminhtml\ApiSecureTradinf\Redirect">
 		<arguments>
 			<argument name="config" xsi:type="object">SecureTradingConfig</argument>
 		</arguments>
 	</type>
-
 	<type name="SecureTrading\Trust\Controller\Adminhtml\PaymentPage\Response">
 		<arguments>
 			<argument name="config" xsi:type="object">SecureTradingConfig</argument>
 			<argument name="commandPool" xsi:type="object">SecureTradingCommandPool</argument>
 		</arguments>
 	</type>
-
 	<type name="SecureTrading\Trust\Controller\Adminhtml\ApiSecureTrading\CardUrl">
 		<arguments>
 			<argument name="config" xsi:type="object">SecureTradingConfig</argument>
 			<argument name="commandPool" xsi:type="object">SecureTradingApiCommandPool</argument>
 		</arguments>
 	</type>
-
 	<type name="SecureTrading\Trust\Controller\ApiSecureTrading\CardUrl">
 		<arguments>
 			<argument name="config" xsi:type="object">SecureTradingApiConfig</argument>
 			<argument name="commandPool" xsi:type="object">SecureTradingApiCommandPool</argument>
 		</arguments>
 	</type>
-
 	<type name="Magento\Sales\Controller\Adminhtml\Order\Create\Save">
 		<plugin name="secure_trading_moto" type="SecureTrading\Trust\Plugin\Controller\Adminhtml\Order\Create\Save"/>
 	</type>
-
 	<type name="SecureTrading\Trust\Helper\Logger\Logger">
 		<arguments>
 			<argument name="name" xsi:type="string">SecureTrading</argument>
@@ -293,20 +259,17 @@
 			</argument>
 		</arguments>
 	</type>
-
 	<!-- Secure Trading Vault Facade    -->
 	<virtualType name="SecureTradingVaultConfig" type="SecureTrading\Trust\Gateway\Config\Config">
 		<arguments>
 			<argument name="methodCode" xsi:type="const">SecureTrading\Trust\Model\Ui\ConfigProvider::VAULT_CODE</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingVaultValueHandler" type="VaultPaymentDefaultValueHandler">
 		<arguments>
 			<argument name="configInterface" xsi:type="object">SecureTradingVaultConfig</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingVaultValueHandlerPool" type="VaultPaymentValueHandlerPool">
 		<arguments>
 			<argument name="handlers" xsi:type="array">
@@ -314,7 +277,6 @@
 			</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingVaultFacade" type="Magento\Vault\Model\Method\Vault">
 		<arguments>
 			<argument name="config" xsi:type="object">SecureTradingVaultConfig</argument>
@@ -323,13 +285,11 @@
 			<argument name="code" xsi:type="const">SecureTrading\Trust\Model\Ui\ConfigProvider::VAULT_CODE</argument>
 		</arguments>
 	</virtualType>
-
 	<type name="SecureTrading\Trust\Block\Catalog\Product\View">
 		<arguments>
 			<argument name="config" xsi:type="object">SecureTradingConfig</argument>
 		</arguments>
 	</type>
-
 	<!-- Secure Trading Api Vault Facade    -->
 	<virtualType name="SecureTradingApiVaultFacade" type="Magento\Vault\Model\Method\Vault">
 		<arguments>
@@ -339,13 +299,11 @@
 			<argument name="code" xsi:type="const">SecureTrading\Trust\Model\Ui\ConfigProvider::VAULT_API_CODE</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingVaultApiConfig" type="SecureTrading\Trust\Gateway\Config\Config">
 		<arguments>
 			<argument name="methodCode" xsi:type="const">SecureTrading\Trust\Model\Ui\ConfigProvider::VAULT_API_CODE</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingApiVaultValueHandlerPool" type="VaultPaymentValueHandlerPool">
 		<arguments>
 			<argument name="handlers" xsi:type="array">
@@ -353,20 +311,15 @@
 			</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingApiVaultValueHandler" type="VaultPaymentDefaultValueHandler">
 		<arguments>
 			<argument name="configInterface" xsi:type="object">SecureTradingVaultApiConfig</argument>
 		</arguments>
 	</virtualType>
-
-
-
 	<!-- Convert options from quote to order-->
 	<type name="Magento\Quote\Model\Quote\Item\ToOrderItem">
 		<plugin name="subscription_convert_options_to_order" type="SecureTrading\Trust\Plugin\Quote\QuoteItemToOrderItem"/>
 	</type>
-
 	<!-- Subscription Grid Collection-->
 	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
 		<arguments>
@@ -375,7 +328,6 @@
 			</argument>
 		</arguments>
 	</type>
-
 	<!-- Show subscription options for item -->
 	<type name="Magento\Catalog\Helper\Product\Configuration">
 		<plugin name="show_subscription_options" type="SecureTrading\Trust\Plugin\Catalog\Helper\Product\ShowSubscriptionOption"/>
@@ -386,19 +338,16 @@
 			<argument name="config" xsi:type="object">SecureTradingConfig</argument>
 		</arguments>
 	</type>
-
 	<!-- Create authorize transaction -->
 	<type name="SecureTrading\Trust\Gateway\Command\CapturePartialCommand">
 		<arguments>
 			<argument name="commandPool" xsi:type="object">SecureTradingCommandPool</argument>
 		</arguments>
 	</type>
-
 	<!-- Re calculate total paid -->
 	<type name="Magento\Sales\Model\Order\Invoice">
 		<plugin name="re_calculate_total_paid" type="SecureTrading\Trust\Plugin\Model\Order\Invoice\ReCalculateTotalPaid"/>
 	</type>
-
 	<type name="SecureTrading\Trust\Controller\Subscription\Cancel">
 		<arguments>
 			<argument name="config" xsi:type="object">SecureTradingConfig</argument>
@@ -406,22 +355,17 @@
 			<argument name="commandPoolAPI" xsi:type="object">SecureTradingApiCommandPool</argument>
 		</arguments>
 	</type>
-
 	<type name="SecureTrading\Trust\Controller\Adminhtml\Subscription\Cancel">
 		<arguments>
 			<argument name="config" xsi:type="object">SecureTradingConfig</argument>
 			<argument name="commandPool" xsi:type="object">SecureTradingCommandPool</argument>
 		</arguments>
 	</type>
-
-
 	<!-- Fix getPostCode return null instead of string value -->
 	<type name="Magento\Sales\Api\Data\OrderAddressInterface">
 		<plugin name="get_post_code" type="SecureTrading\Trust\Plugin\Model\Order\GetPostCodeAddress"/>
 	</type>
-
 	<!-- Secure Trading Api Facade    -->
-
 	<virtualType name="SecureTradingApiFacade" type="Magento\Payment\Model\Method\Adapter">
 		<arguments>
 			<argument name="code" xsi:type="const">SecureTrading\Trust\Model\Ui\ConfigProvider::API_CODE</argument>
@@ -432,7 +376,6 @@
 			<argument name="commandPool" xsi:type="object">SecureTradingApiCommandPool</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingApiValueHandlerPool" type="Magento\Payment\Gateway\Config\ValueHandlerPool">
 		<arguments>
 			<argument name="handlers" xsi:type="array">
@@ -440,19 +383,16 @@
 			</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingApiConfigValueHandler" type="Magento\Payment\Gateway\Config\ConfigValueHandler">
 		<arguments>
 			<argument name="configInterface" xsi:type="object">SecureTradingApiConfig</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingApiConfig" type="SecureTrading\Trust\Gateway\Config\Config">
 		<arguments>
 			<argument name="methodCode" xsi:type="const">SecureTrading\Trust\Model\Ui\ConfigProvider::API_CODE</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingApiValidatorPool" type="Magento\Payment\Gateway\Validator\ValidatorPool">
 		<arguments>
 			<argument name="validators" xsi:type="array">
@@ -460,7 +400,6 @@
 			</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingApiCommandPool" type="Magento\Payment\Gateway\Command\CommandPool">
 		<arguments>
 			<argument name="commands" xsi:type="array">
@@ -477,7 +416,6 @@
 			</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingGetLinkRedirect" type="SecureTrading\Trust\Gateway\Command\Api\GetLinkRedirectCommand">
 		<arguments>
 			<argument name="requestBuilder" xsi:type="object">SecureTradingGetLinkRedirectRequest</argument>
@@ -486,7 +424,6 @@
 			<argument name="validator" xsi:type="object">SecureTrading\Trust\Gateway\Validator\Api\ResponseValidator</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingGetDetailPayPal" type="SecureTrading\Trust\Gateway\Command\Api\GetDetailPayPal">
 		<arguments>
 			<argument name="requestBuilder" xsi:type="object">SecureTradingGetDetailPayPalRequest</argument>
@@ -495,7 +432,6 @@
 			<argument name="validator" xsi:type="object">SecureTrading\Trust\Gateway\Validator\Api\ResponseValidator</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingAuthPayPal" type="SecureTrading\Trust\Gateway\Command\Api\AuthPayPal">
 		<arguments>
 			<argument name="requestBuilder" xsi:type="object">SecureTradingAuthPayPalRequest</argument>
@@ -504,7 +440,6 @@
 			<argument name="validator" xsi:type="object">SecureTrading\Trust\Gateway\Validator\Api\ResponseValidator</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingApiDetailCommand" type="SecureTrading\Trust\Gateway\Command\Api\DetailCommand">
 		<arguments>
 			<argument name="requestBuilder" xsi:type="object">SecureTradingApiDetailRequestBuilder</argument>
@@ -513,7 +448,6 @@
 			<argument name="validator" xsi:type="object">SecureTrading\Trust\Gateway\Validator\Api\ResponseValidator</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingApiCaptureCommand" type="SecureTrading\Trust\Gateway\Command\Api\CaptureCommand">
 		<arguments>
 			<argument name="requestBuilder" xsi:type="object">SecureTradingCaptureRequest</argument>
@@ -523,7 +457,6 @@
 			<argument name="config" xsi:type="object">SecureTradingConfig</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingApiRefundCommand" type="SecureTrading\Trust\Gateway\Command\Api\RefundCommand">
 		<arguments>
 			<argument name="requestBuilder" xsi:type="object">SecureTradingApiRefundRequestBuilder</argument>
@@ -532,7 +465,6 @@
 			<argument name="validator" xsi:type="object">SecureTrading\Trust\Gateway\Validator\Api\ResponseValidator</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingApiAuthorizeCommand" type="SecureTrading\Trust\Gateway\Command\AuthorizeCommand">
 		<arguments>
 			<argument name="requestBuilder" xsi:type="object">SecureTradingApiRequestBuilder</argument>
@@ -541,8 +473,6 @@
 			<argument name="validator" xsi:type="object">SecureTrading\Trust\Gateway\Validator\Api\TransactionUpdateResponseValidator</argument>
 		</arguments>
 	</virtualType>
-
-
 	<virtualType name="SecureTradingApiAuthorizeCaptureCommand" type="SecureTrading\Trust\Gateway\Command\Api\AuthorizeCaptureCommand">
 		<arguments>
 			<argument name="requestBuilder" xsi:type="object">SecureTradingApiRequestBuilder</argument>
@@ -551,56 +481,47 @@
 			<argument name="validator" xsi:type="object">SecureTrading\Trust\Gateway\Validator\Api\ResponseValidator</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingApiRequestBuilder" type="SecureTrading\Trust\Gateway\Request\Api\OrderRequest">
 		<arguments>
 			<argument name="config" xsi:type="object">SecureTradingApiConfig</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingApiRefundRequestBuilder" type="SecureTrading\Trust\Gateway\Request\Api\RefundRequest">
 		<arguments>
 			<argument name="config" xsi:type="object">SecureTradingApiConfig</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingApiDetailRequestBuilder" type="SecureTrading\Trust\Gateway\Request\Api\DetailRequest">
 		<arguments>
 			<argument name="config" xsi:type="object">SecureTradingApiConfig</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingGetLinkRedirectRequest" type="SecureTrading\Trust\Gateway\Request\Api\RedirectRequest">
 		<arguments>
 			<argument name="config" xsi:type="object">SecureTradingApiConfig</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingGetDetailPayPalRequest" type="SecureTrading\Trust\Gateway\Request\Api\GetDetailPayPal">
 		<arguments>
 			<argument name="config" xsi:type="object">SecureTradingApiConfig</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingAuthPayPalRequest" type="SecureTrading\Trust\Gateway\Request\Api\AuthPayPalRequest">
 		<arguments>
 			<argument name="config" xsi:type="object">SecureTradingApiConfig</argument>
 		</arguments>
 	</virtualType>
-
 	<type name="SecureTrading\Trust\Plugin\Multishipping\Controller\Checkout\RedirectToPaymentPage">
 		<arguments>
 			<argument name="commandPool" xsi:type="object">SecureTradingApiCommandPool</argument>
 		</arguments>
 	</type>
-
 	<virtualType name="SecureTradingApiOrderCommand" type="SecureTrading\Trust\Gateway\Command\OrderCommand">
 		<arguments>
 			<argument name="requestBuilder" xsi:type="object">SecureTradingOrderRequest</argument>
 			<argument name="handler" xsi:type="object">SecureTradingApiOrderHandlerComposite</argument>
 		</arguments>
 	</virtualType>
-
 	<virtualType name="SecureTradingApiOrderHandlerComposite" type="Magento\Payment\Gateway\Response\HandlerChain">
 		<arguments>
 			<argument name="handlers" xsi:type="array">
@@ -609,4 +530,3 @@
 		</arguments>
 	</virtualType>
 </config>
-
