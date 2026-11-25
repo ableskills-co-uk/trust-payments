@@ -223,7 +223,7 @@ class GenerateJwt extends \Magento\Framework\App\Action\Action
             }
 
             $data = [];
-            # 2022-03-18 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+            # 2022-03-18 Dmitry Fedyuk https://github.com/dmitrii-fediuk
 			$jwt = $this->jwt->encode($payload, $secretkey, 'HS256');
 			$this->logger->addDebug('--- JWT : ' . $jwt);
 

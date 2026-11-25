@@ -100,12 +100,12 @@ class SaveCardInfo extends \Magento\Framework\App\Action\Action
      */
     function handleJwt($payment, $secretkey, $isSave){
         $jwt = $payment->getAdditionalInformation('jwt');
-        # 2022-03-18 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+        # 2022-03-18 Dmitry Fedyuk https://github.com/dmitrii-fediuk
         $jwtDecode = (array)$this->jwt->decode($jwt, new \Firebase\JWT\Key($secretkey, 'HS256'));
         $payload = (array)$jwtDecode['payload'];
         $isSave ? $payload['credentialsonfile'] = 1 : $payload['credentialsonfile'] = 0;
         $jwtDecode['payload'] = $payload;
-        # 2022-03-18 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+        # 2022-03-18 Dmitry Fedyuk https://github.com/dmitrii-fediuk
         $jwt = $this->jwt->encode($jwtDecode, $secretkey, 'HS256');
         $payment->setAdditionalInformation('jwt', $jwt);
         return $jwt;

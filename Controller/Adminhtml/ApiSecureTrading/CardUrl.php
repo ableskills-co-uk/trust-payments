@@ -146,7 +146,7 @@ class CardUrl extends Response
 
 	function decodeJWT($jwtResponse)
 	{
-        # 2022-03-18 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+        # 2022-03-18 Dmitry Fedyuk https://github.com/dmitrii-fediuk
 		$responseData = $this->jwt->decode($jwtResponse['jwt'],
             new \Firebase\JWT\Key('2-349c1a844b3bbb26452d5b6ffd25237ba9f4c42b109087acc9d72e6d90ab77f8', 'HS256')
         );
